@@ -29,4 +29,6 @@ public class PlayfabLogin : MonoBehaviour
         Debug.LogError("Here's some debug information:");
         Debug.LogError(error.GenerateErrorReport());
     }
+
+
 }

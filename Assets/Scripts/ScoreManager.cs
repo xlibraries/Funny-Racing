@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class ScoreManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -37,6 +35,7 @@ public class ScoreManager : MonoBehaviour
     private void OnStatisticsUpdated(UpdatePlayerStatisticsResult updateResult)
     {
         Debug.Log("Successfully submitted high score");
+        GetLeaderboardData();
     }
 
     private void FailureCallback(PlayFabError error)
@@ -45,15 +44,26 @@ public class ScoreManager : MonoBehaviour
         Debug.LogError(error.GenerateErrorReport());
     }
 
-    ////Get the players with the top 10 high scores in the game
-    //public void RequestLeaderboard()
-    //{
-    //    PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
-    //    {
-    //        StatisticName = "HighScore",
-    //        StartPosition = 0,
-    //        MaxResultsCount = 10
-    //    }, result => DisplayLeaderboard(result), FailureCallback);
-    //}
+    //Get the players with the top 10 high scores in the game
+    private void GetLeaderboardData()
+    {
+        GetLeaderboardRequest requestData = new GetLeaderboardRequest()
+        {
+            StatisticName = "HighScore",
+        };
+        PlayFabClientAPI.GetLeaderboard(requestData, OnGetLeaderboardDataResult, OnGetLeaderboardDataError);
+    }
+
+    private void OnGetLeaderboardDataResult(GetLeaderboardResult response)
+    {
+        foreach (var entry in response.Leaderboard)
+        {
+            Debug.Log(entry.Position + ". " + entry.DisplayName + " : " + entry.StatValue);
+        }
+    }
+    private void OnGetLeaderboardDataError(PlayFabError error)
+    {
+        Debug.Log(error.ErrorMessage);
+    }
 
 }
