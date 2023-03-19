@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarController : MonoBehaviour
+public class CarController : GameManager
 {
     public float speed = 1500;
     public float rotationSpeed = 15;
@@ -17,6 +17,8 @@ public class CarController : MonoBehaviour
     {
         movment = -Input.GetAxisRaw("Vertical") * speed;
         rotation = Input.GetAxisRaw("Horizontal");
+        DistanceCovered();
+        //Debug.Log(fuel);
     }
 
     void FixedUpdate()
@@ -31,7 +33,7 @@ public class CarController : MonoBehaviour
         {
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
-            JointMotor2D motor = new JointMotor2D { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
+            JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
         }
