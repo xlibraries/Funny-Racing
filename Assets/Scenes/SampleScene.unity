@@ -943,7 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b9d95a00f363b4cb981b6446f9de14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: SubmitScore
+  scenename: SampleScene
 --- !u!61 &1547798523
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71f42e211267d6468c8143a805d2c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startpoint: {fileID: 0}
+  startpoint: {fileID: 2040076337}
   speed: 1200
   rotationSpeed: 400
   backWheel: {fileID: 1841848033}

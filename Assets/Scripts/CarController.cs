@@ -33,7 +33,10 @@ public class CarController : GameManager
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
             FuelManagement();
-            JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
+            JointMotor2D motor = new() 
+            {
+                motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque 
+            };
             backWheel.motor = motor;
             frontWheel.motor = motor;
         }
