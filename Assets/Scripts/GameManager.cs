@@ -5,10 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /*speed = distance / time;
+      distance = fuel present * milage;
+    */
     public Transform startpoint;
 
-    public float fuel;
-    public float distanceCovered;
+    //Parameters for fuel management system
+    private const float fuelCapacity = 10.0f;
+    public static float fuelPresent;
+    private const float BurnRate = 1.0f;
+
+
+    //Paraments for distance calculation
+    public static float distanceCovered;
     private float distX;
     private float distY;
     private float distZ;
@@ -21,22 +30,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fuel = 100;
+        fuelPresent = fuelCapacity;
+        Debug.Log("Fuel present on start: " + fuelPresent);
         startX = startpoint.position.x;
         startY = startpoint.position.y;
         startZ = startpoint.position.z;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //DistanceCovered();
-    }
-
     public void DistanceCovered()
     {
         distX = this.transform.position.x;
-       // Debug.Log(distanceX.ToString());
         distY = this.transform.position.y;
         distZ = this.transform.position.z;
 
@@ -45,7 +48,13 @@ public class GameManager : MonoBehaviour
             Mathf.Pow(distY - startY, 2) +
             Mathf.Pow(distZ - startZ, 2)
             );
-        Debug.Log(distanceCovered);
+        //Debug.Log("Distance Covered: " + distanceCovered);
+    }
+
+    public void FuelManagement()
+    {
+        fuelPresent -= BurnRate * Time.deltaTime;
+        Debug.Log("Fuel Present: " + fuelPresent);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -57,7 +66,8 @@ public class GameManager : MonoBehaviour
 
         if (collider.CompareTag("Fuel"))
         {
-            fuel = 100;
+            fuelPresent = fuelCapacity;
+            Debug.Log("Fuel Refilled " + fuelPresent);
         }
     }
 }

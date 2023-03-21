@@ -18,21 +18,21 @@ public class CarController : GameManager
         movment = -Input.GetAxisRaw("Vertical") * speed;
         rotation = Input.GetAxisRaw("Horizontal");
         DistanceCovered();
-        //Debug.Log(fuel);
+        //FuelManagement();
     }
 
     void FixedUpdate()
     {
-        if (movment == 0)
+        if (movment == 0 || fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
-
         }
         else 
         {
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
+            FuelManagement();
             JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
