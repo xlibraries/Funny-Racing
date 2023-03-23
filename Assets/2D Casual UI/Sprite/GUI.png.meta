@@ -672,7 +672,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_17
+      name: BGCurvedRectanglewithShade_Icon
       rect:
         serializedVersion: 2
         x: 1790
@@ -693,7 +693,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_18
+      name: BGCurvedRectangle_Icon
       rect:
         serializedVersion: 2
         x: 2192
@@ -1260,10 +1260,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_52
+      name: BGSquare_Icon
       rect:
         serializedVersion: 2
-        x: 2163
+        x: 2154
         y: 385
         width: 270
         height: 270
@@ -1281,7 +1281,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_53
+      name: BGSquarewithShade_Icon
       rect:
         serializedVersion: 2
         x: 2456
@@ -1575,7 +1575,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_67
+      name: Quite_Icon
       rect:
         serializedVersion: 2
         x: 573
@@ -1634,6 +1634,7 @@ TextureImporter:
       GUI_11: 21300022
       GUI_56: 21300098
       GUI_68: 21300122
+      Quite_Icon: 21300120
       GUI_15: 21300030
       GUI_54: 21300094
       GUI_21: 21300042
@@ -1650,10 +1651,10 @@ TextureImporter:
       GUI_16: 21300032
       GUI_58: 21300102
       Google_Icon: 21300112
-      GUI_10: 21300020
-      Shop_Icon: 21300084
       GUI_31: 21300062
-      GUI_52: 21300090
+      Shop_Icon: 21300084
+      GUI_10: 21300020
+      GUI_27: 21300054
       GUI_60: 21300106
       GUI_28: 21300056
       GUI_5: 21300010
@@ -1663,13 +1664,11 @@ TextureImporter:
       Replay_Icon: 21300072
       GUI_42: 21300074
       BGCircle_Icon: 21300014
-      GUI_27: 21300054
       GUI_32: 21300064
       GUI_19: 21300038
+      BGCurvedRectanglewithShade_Icon: 21300034
       Achivements_Icon: 21300110
-      GUI_67: 21300120
       BGCirclewithShade_Icon: 21300016
-      GUI_53: 21300092
       GUI_29: 21300058
       GUI_1: 21300002
       GUI_55: 21300096
@@ -1682,12 +1681,13 @@ TextureImporter:
       GUI_23: 21300104
       GUI_66: 21300034
       GUI_59: 21300118
-      GUI_17: 21300082
       GUI_46: 21300116
+      BGSquare_Icon: 21300090
+      BGCurvedRectangle_Icon: 21300036
       Music_Icon: 21300086
       GUI_25: 21300036
       Play_Icon: 21300068
-      GUI_18: 21300114
+      BGSquarewithShade_Icon: 21300092
       GUI_64: 21300066
   spritePackingTag: 
   pSDRemoveMatte: 0
