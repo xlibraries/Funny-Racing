@@ -8,14 +8,26 @@ public class Goal : ScoreManager
     [SerializeField]
     private string scenename;
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void Update()
     {
-        if(collider.CompareTag("Player"))
+        if ((GameManager.fuelPresent <= 0) || GameManager.isGrounded)
         {
-            Debug.Log("Game Won");
-            SubmitScore(100);
-            SceneManager.LoadScene(scenename);
+            SubmitScore();
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            SubmitScore();
+        }
+    }
+
+    public void SubmitScore()
+    {
+        Debug.Log("Game Won");
+        SubmitScore((int)GameManager.distanceCovered);
+        SceneManager.LoadScene(scenename);
+    }
 }

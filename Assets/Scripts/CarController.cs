@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CarController : GameManager
 {
@@ -28,17 +29,20 @@ public class CarController : GameManager
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
         }
-        else 
+        else
         {
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
             FuelManagement();
-            JointMotor2D motor = new() 
-            {
-                motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque 
-            };
+            JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
+        }
+        if (fuelPresent <= 0)
+        {
+            backWheel.useMotor = false;
+            frontWheel.useMotor = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
     }
