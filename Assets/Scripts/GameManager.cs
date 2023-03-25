@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
       distance = fuel present * milage;
     */
     public Transform startpoint;
+    public static bool isGrounded;
 
     //Parameters for fuel management system
     private const float fuelCapacity = 10.0f;
@@ -25,12 +26,11 @@ public class GameManager : MonoBehaviour
     private float startY;
     private float startZ;
 
-    readonly CarController player;
-
     // Start is called before the first frame update
     void Start()
     {
         fuelPresent = fuelCapacity;
+        isGrounded = false;
         Debug.Log("Fuel present on start: " + fuelPresent);
         startX = startpoint.position.x;
         startY = startpoint.position.y;
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     {
         if (collider.CompareTag("Ground"))
         {
+            isGrounded = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
