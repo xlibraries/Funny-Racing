@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         if (collider.CompareTag("Ground"))
         {
-            isGrounded= true;
+            isGrounded = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

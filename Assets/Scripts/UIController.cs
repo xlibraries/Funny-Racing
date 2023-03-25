@@ -6,23 +6,5 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    public void UpgradeSuspension()
-    {
 
-    }
-
-    public void UpgradeEngine()
-    {
-
-    }
-
-    public void UpgradeChasis()
-    {
-
-    }
-
-    public void UpgradeTyres()
-    {
-
-    }
 }
