@@ -6,18 +6,6 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        //SubmitScore();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SubmitScore(int playerScore)
     {
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
@@ -47,7 +35,7 @@ public class ScoreManager : MonoBehaviour
     //Get the players with the top 10 high scores in the game
     private void GetLeaderboardData()
     {
-        GetLeaderboardRequest requestData = new GetLeaderboardRequest()
+        GetLeaderboardRequest requestData = new()
         {
             StatisticName = "HighScore",
         };
