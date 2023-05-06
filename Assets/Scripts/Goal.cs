@@ -20,13 +20,13 @@ public class Goal : ScoreManager
     {
         if (collider.CompareTag("Player"))
         {
+            Debug.Log("Game Won");
             SubmitScore();
         }
     }
 
     public void SubmitScore()
     {
-        Debug.Log("Game Won");
         SubmitScore((int)GameManager.distanceCovered);
         SceneManager.LoadScene(scenename);
     }

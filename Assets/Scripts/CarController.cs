@@ -14,6 +14,8 @@ public class CarController : GameManager
     private float movment = 0f;
     private float rotation = 0f;
 
+    CarManager carManager;
+
     void Update()
     {
         movment = -Input.GetAxisRaw("Vertical") * speed;
@@ -34,6 +36,7 @@ public class CarController : GameManager
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
             FuelManagement();
+            //UpgradeSuspension();
             JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
@@ -45,5 +48,23 @@ public class CarController : GameManager
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
+    }
+
+    public void UpgradeSuspension()
+    {
+        if (carManager.isSuspension)
+        {
+            Debug.Log("Hum Jeet gaye");
+        }
+        float dampingRatio = frontWheel.suspension.dampingRatio;
+        int frequency = (int)frontWheel.suspension.frequency;
+        dampingRatio += 0.1f;
+        frequency += 500;
+        frontWheel.suspension.dampingRatio.Equals(dampingRatio);
+        frontWheel.suspension.frequency.Equals(frequency);
+        backWheel.suspension.dampingRatio.Equals(dampingRatio);
+        backWheel.suspension.frequency.Equals(frequency);
+        Debug.Log(backWheel.suspension.dampingRatio.Equals(dampingRatio));
+        Debug.Log(backWheel.suspension.frequency.Equals(frequency));
     }
 }
