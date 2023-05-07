@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         fuelPresent = fuelCapacity;
         isGrounded = false;
-        Debug.Log("Fuel present on start: " + fuelPresent);
+        //Debug.Log("Fuel present on start: " + fuelPresent);
         startX = startpoint.position.x;
         startY = startpoint.position.y;
         startZ = startpoint.position.z;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void FuelManagement()
     {
         fuelPresent -= BurnRate * Time.deltaTime;
-        Debug.Log("Fuel Present: " + fuelPresent);
+        //Debug.Log("Fuel Present: " + fuelPresent);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
