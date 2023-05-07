@@ -4,23 +4,53 @@ using UnityEngine;
 
 public class CarManager : MonoBehaviour
 {
-    private readonly CarController player;
-    public bool isSuspension = false;
+    private CarController player;
+
+    private void Awake()
+    {
+        player = GetComponentInParent<CarController>();
+        if (player == null)
+        {
+            Debug.LogError("CarController component is missing on the CarManager's parent GameObject.");
+        }
+    }
+
+
+    private float FrontWheelDampingRatio
+    {
+        get => player.frontWheel.suspension.dampingRatio;
+        set
+        {
+            JointSuspension2D suspension = player.frontWheel.suspension;
+            suspension.dampingRatio = value;
+            player.frontWheel.suspension = suspension;
+            player.backWheel.suspension = suspension;
+        }
+    }
 
     public void UpgradeSuspension()
     {
-        isSuspension= true;
+        AdjustSuspension(-0.1f, -500);
     }
 
     public void DowngradeSuspension()
     {
-        float dampingRatio = player.frontWheel.suspension.dampingRatio;
-        int frequency = (int)player.frontWheel.suspension.frequency;
-        dampingRatio -= 0.1f;
-        frequency -= 500;
-        player.frontWheel.suspension.dampingRatio.Equals(dampingRatio);
-        player.frontWheel.suspension.frequency.Equals(frequency);
-        player.backWheel.suspension.dampingRatio.Equals(dampingRatio);
-        player.backWheel.suspension.frequency.Equals(frequency);
+        AdjustSuspension(0.1f, 500);
+    }
+
+    private void AdjustSuspension(float dampingDelta, int frequencyDelta)
+    {
+        float newDampingRatio = FrontWheelDampingRatio + dampingDelta;
+        int newFrequency = (int)player.frontWheel.suspension.frequency + frequencyDelta;
+
+        FrontWheelDampingRatio = newDampingRatio;
+        JointSuspension2D suspension = player.frontWheel.suspension;
+        suspension.frequency = newFrequency;
+        player.frontWheel.suspension = suspension;
+        player.backWheel.suspension = suspension;
+
+        Debug.Log("dampingRatio: " + newDampingRatio);
+        Debug.Log("frequency: " + newFrequency);
     }
 }
+

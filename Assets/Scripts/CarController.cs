@@ -10,15 +10,14 @@ public class CarController : GameManager
     public WheelJoint2D backWheel;
     public WheelJoint2D frontWheel;
     public Rigidbody2D rb;
+    public SuspensionManager suspensionManager;
 
-    private float movment = 0f;
+    private float movement = 0f;
     private float rotation = 0f;
-
-    CarManager carManager;
 
     void Update()
     {
-        movment = -Input.GetAxisRaw("Vertical") * speed;
+        movement = -Input.GetAxisRaw("Vertical") * speed;
         rotation = Input.GetAxisRaw("Horizontal");
         DistanceCovered();
         //FuelManagement();
@@ -26,7 +25,7 @@ public class CarController : GameManager
 
     void FixedUpdate()
     {
-        if (movment == 0 || fuelPresent <= 0)
+        if (movement == 0 || fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
@@ -37,7 +36,7 @@ public class CarController : GameManager
             frontWheel.useMotor = true;
             FuelManagement();
             //UpgradeSuspension();
-            JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
+            JointMotor2D motor = new JointMotor2D { motorSpeed = movement, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
         }
@@ -50,21 +49,11 @@ public class CarController : GameManager
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
     }
 
+    // Remove the UpgradeSuspension method
+
+    // Call the UpgradeSuspension method from SuspensionManager
     public void UpgradeSuspension()
     {
-        if (carManager.isSuspension)
-        {
-            Debug.Log("Hum Jeet gaye");
-        }
-        float dampingRatio = frontWheel.suspension.dampingRatio;
-        int frequency = (int)frontWheel.suspension.frequency;
-        dampingRatio += 0.1f;
-        frequency += 500;
-        frontWheel.suspension.dampingRatio.Equals(dampingRatio);
-        frontWheel.suspension.frequency.Equals(frequency);
-        backWheel.suspension.dampingRatio.Equals(dampingRatio);
-        backWheel.suspension.frequency.Equals(frequency);
-        Debug.Log(backWheel.suspension.dampingRatio.Equals(dampingRatio));
-        Debug.Log(backWheel.suspension.frequency.Equals(frequency));
+        suspensionManager.UpgradeSuspension(0.1f);
     }
 }
