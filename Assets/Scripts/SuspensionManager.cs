@@ -15,7 +15,9 @@ public class SuspensionManager : MonoBehaviour
     public float dampingDelta = 0.1f;
     public int frequencyDelta = 400;
 
-    private const string SuspensionKey = "SuspensionDampingRatio";
+    private const string SuspensionKey = "SuspensionProperties";
+
+    SuspensionData suspensionData = new();
 
     public static SuspensionManager Instance { get; private set; }
 
@@ -111,7 +113,12 @@ public class SuspensionManager : MonoBehaviour
     // Save the suspension value using PlayerPrefs
     private void SaveSuspensionValue()
     {
-        PlayerPrefs.SetFloat(SuspensionKey, frontWheelDampingRatio);
+        suspensionData.DampingRatio = frontWheelDampingRatio;
+        suspensionData.Frequency = frontWheeelFrequency;
+        PlayerPrefs.SetFloat("DamingRatioKey", suspensionData.DampingRatio);
+        PlayerPrefs.SetInt("FrequencyKey", suspensionData.Frequency);
+        string json = JsonUtility.ToJson(suspensionData);
+        PlayerPrefs.SetString(SuspensionKey, json);
         PlayerPrefs.Save();
     }
 
@@ -120,7 +127,15 @@ public class SuspensionManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(SuspensionKey))
         {
-            frontWheelDampingRatio = PlayerPrefs.GetFloat(SuspensionKey);
+            frontWheelDampingRatio = PlayerPrefs.GetFloat("DamingRatioKey");
+            frontWheeelFrequency = PlayerPrefs.GetInt("FrequencyKey");
         }
+    }
+
+    [System.Serializable]
+    public class SuspensionData
+    {
+        public int Frequency { get; set; }
+        public float DampingRatio { get; set; }
     }
 }
