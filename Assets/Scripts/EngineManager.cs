@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuspensionManager : MonoBehaviour
+public class EngineManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
@@ -19,7 +19,7 @@ public class SuspensionManager : MonoBehaviour
 
     SuspensionData suspensionData = new();
 
-    public static SuspensionManager Instance { get; private set; }
+    public static EngineManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class SuspensionManager : MonoBehaviour
     public void UpgradeSuspension()
     {
         frontWheelDampingRatio += dampingDelta;
-        frontWheeelFrequency *= frequencyDelta;
+        frontWheeelFrequency += frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
@@ -67,7 +67,7 @@ public class SuspensionManager : MonoBehaviour
     public void DowngradeSuspension()
     {
         frontWheelDampingRatio -= dampingDelta;
-        frontWheeelFrequency /= frequencyDelta;
+        frontWheeelFrequency -= frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
