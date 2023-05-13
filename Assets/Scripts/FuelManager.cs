@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class FuelManager : MonoBehaviour
 {
-
-
-
-
     //private float fuel;
     //public float distanceCovered;
     //private float distanceX;

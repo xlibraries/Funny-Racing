@@ -10,13 +10,14 @@ public class CarController : GameManager
     public WheelJoint2D backWheel;
     public WheelJoint2D frontWheel;
     public Rigidbody2D rb;
+    public SuspensionManager suspensionManager;
 
-    private float movment = 0f;
+    private float movement = 0f;
     private float rotation = 0f;
 
     void Update()
     {
-        movment = -Input.GetAxisRaw("Vertical") * speed;
+        movement = -Input.GetAxisRaw("Vertical") * speed;
         rotation = Input.GetAxisRaw("Horizontal");
         DistanceCovered();
         //FuelManagement();
@@ -24,7 +25,7 @@ public class CarController : GameManager
 
     void FixedUpdate()
     {
-        if (movment == 0 || fuelPresent <= 0)
+        if (movement == 0 || fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
@@ -34,7 +35,8 @@ public class CarController : GameManager
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
             FuelManagement();
-            JointMotor2D motor = new() { motorSpeed = movment, maxMotorTorque = backWheel.motor.maxMotorTorque };
+            //UpgradeSuspension();
+            JointMotor2D motor = new JointMotor2D { motorSpeed = movement, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
         }
@@ -45,5 +47,13 @@ public class CarController : GameManager
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
+    }
+
+    // Remove the UpgradeSuspension method
+
+    // Call the UpgradeSuspension method from SuspensionManager
+    public void UpgradeSuspension()
+    {
+        suspensionManager.UpgradeSuspension();
     }
 }
