@@ -7,7 +7,14 @@ public class SuspensionManager : MonoBehaviour
     public CarController carController; // Reference to the CarController GameObject
 
     private float frontWheelDampingRatio;
-    private float initialFrontWheelDampingRatio;
+    private float initialFrontWheelDampingRatio = 0.1f;
+
+    private int frontWheeelFrequency;
+    private int initialFrontWheelfrequency = 4;
+
+    public float dampingDelta = 0.1f;
+    public int frequencyDelta = 400;
+
     private const string SuspensionKey = "SuspensionDampingRatio";
 
     public static SuspensionManager Instance { get; private set; }
@@ -37,24 +44,28 @@ public class SuspensionManager : MonoBehaviour
     }
 
     // Initialize the suspension with an initial damping ratio
-    public void Initialize(float initialDampingRatio)
+    public void Initialize(float initialDampingRatio, int initialFrequency)
     {
         frontWheelDampingRatio = initialDampingRatio;
         initialFrontWheelDampingRatio = initialDampingRatio;
+        frontWheeelFrequency = initialFrequency;
+        initialFrontWheelfrequency = initialFrequency;
     }
 
     // Upgrade the suspension by adding a damping delta
-    public void UpgradeSuspension(float dampingDelta)
+    public void UpgradeSuspension()
     {
         frontWheelDampingRatio += dampingDelta;
+        frontWheeelFrequency += frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
 
     // Downgrade the suspension by subtracting a damping delta
-    public void DowngradeSuspension(float dampingDelta)
+    public void DowngradeSuspension()
     {
         frontWheelDampingRatio -= dampingDelta;
+        frontWheeelFrequency -= frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
@@ -63,14 +74,16 @@ public class SuspensionManager : MonoBehaviour
     public void ResetSuspension()
     {
         frontWheelDampingRatio = initialFrontWheelDampingRatio;
+        frontWheeelFrequency = initialFrontWheelfrequency;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
 
-    // Reset the suspension damping ratio to a specified value
-    public void ResetDampingRatio(float dampingRatio)
+    // Set the suspension damping ratio to a specified value
+    public void SetSuspensionData(float dampingRatio, int frequency)
     {
         frontWheelDampingRatio = dampingRatio;
+        frontWheeelFrequency = frequency;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
@@ -82,10 +95,12 @@ public class SuspensionManager : MonoBehaviour
         {
             JointSuspension2D frontSuspension = carController.frontWheel.suspension;
             frontSuspension.dampingRatio = frontWheelDampingRatio;
+            frontSuspension.frequency = frontWheeelFrequency;
             carController.frontWheel.suspension = frontSuspension;
             carController.backWheel.suspension = frontSuspension;
 
             Debug.Log("dampingRatio: " + frontWheelDampingRatio);
+            Debug.Log("Frequency: " + frontWheeelFrequency);
         }
         else
         {

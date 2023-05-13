@@ -14,9 +14,4 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
-
-    public void OnResetbuttomClick()
-    {
-        SuspensionManager.Instance.ResetDampingRatio(0.1f);
-    }
 }

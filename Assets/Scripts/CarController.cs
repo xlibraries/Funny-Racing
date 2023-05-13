@@ -54,6 +54,6 @@ public class CarController : GameManager
     // Call the UpgradeSuspension method from SuspensionManager
     public void UpgradeSuspension()
     {
-        suspensionManager.UpgradeSuspension(0.1f);
+        suspensionManager.UpgradeSuspension();
     }
 }
