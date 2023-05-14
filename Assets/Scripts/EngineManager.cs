@@ -6,18 +6,18 @@ public class EngineManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
-    private float frontWheelDampingRatio;
-    private float initialFrontWheelDampingRatio = 0.1f;
+    private float frontWheelTorque;
+    private float initialFrontWheelTorque = 500;
 
-    private int frontWheeelFrequency;
-    private int initialFrontWheelfrequency = 4;
+    private float frontWheeelPower;
+    private float initialFrontWheelPower = 400;
 
-    public float dampingDelta = 0.1f;
-    public int frequencyDelta = 400;
+    public float torqueDelta = 7;
+    public float powerDelta = 1.5f;
 
-    private const string SuspensionKey = "SuspensionProperties";
+    private const string EngineKey = "EngineProperties";
 
-    SuspensionData suspensionData = new();
+    EngineData engineData = new();
 
     public static EngineManager Instance { get; private set; }
 
@@ -34,108 +34,108 @@ public class EngineManager : MonoBehaviour
             return;
         }
 
-        // Initialize the SuspensionManager script
+        // Initialize the EngineManager script
         // (e.g., load values, set properties)
 
-        LoadSuspensionValue();
+        LoadEngineValue();
     }
 
     private void Start()
     {
-        ApplySuspensionProperties();
+        ApplyEngineProperties();
     }
 
-    // Initialize the suspension with an initial damping ratio
-    public void Initialize(float initialDampingRatio, int initialFrequency)
+    // Initialize the engine with an initial torque 
+    public void Initialize(int initialTorque, int initialPower)
     {
-        frontWheelDampingRatio = initialDampingRatio;
-        initialFrontWheelDampingRatio = initialDampingRatio;
-        frontWheeelFrequency = initialFrequency;
-        initialFrontWheelfrequency = initialFrequency;
+        frontWheelTorque = initialTorque;
+        initialFrontWheelTorque = initialTorque;
+        frontWheeelPower = initialPower;
+        initialFrontWheelPower = initialPower;
     }
 
-    // Upgrade the suspension by adding a damping delta
-    public void UpgradeSuspension()
+    // Upgrade the engine by adding a torque delta
+    public void UpgradeEngine()
     {
-        frontWheelDampingRatio += dampingDelta;
-        frontWheeelFrequency += frequencyDelta;
-        ApplySuspensionProperties();
-        SaveSuspensionValue();
+        frontWheelTorque *= torqueDelta;
+        frontWheeelPower *= powerDelta;
+        ApplyEngineProperties();
+        SaveEngineValue();
     }
 
-    // Downgrade the suspension by subtracting a damping delta
-    public void DowngradeSuspension()
+    // Downgrade the engine by subtracting a torque delta
+    public void DowngradeEngine()
     {
-        frontWheelDampingRatio -= dampingDelta;
-        frontWheeelFrequency -= frequencyDelta;
-        ApplySuspensionProperties();
-        SaveSuspensionValue();
+        frontWheelTorque -= torqueDelta;
+        frontWheeelPower -= powerDelta;
+        ApplyEngineProperties();
+        SaveEngineValue();
     }
 
-    // Reset the suspension to its initial damping ratio
-    public void ResetSuspension()
+    // Reset the engine to its initial torque 
+    public void ResetEngine()
     {
-        frontWheelDampingRatio = initialFrontWheelDampingRatio;
-        frontWheeelFrequency = initialFrontWheelfrequency;
-        ApplySuspensionProperties();
-        SaveSuspensionValue();
+        frontWheelTorque = initialFrontWheelTorque;
+        frontWheeelPower = initialFrontWheelPower;
+        ApplyEngineProperties();
+        SaveEngineValue();
     }
 
-    // Set the suspension damping ratio to a specified value
-    public void SetSuspensionData(float dampingRatio, int frequency)
+    // Set the engine torque to a specified value
+    public void SetEngineData(int torque, int power)
     {
-        frontWheelDampingRatio = dampingRatio;
-        frontWheeelFrequency = frequency;
-        ApplySuspensionProperties();
-        SaveSuspensionValue();
+        frontWheelTorque = torque;
+        frontWheeelPower = power;
+        ApplyEngineProperties();
+        SaveEngineValue();
     }
 
-    // Apply the suspension properties to the car's front and back wheels
-    private void ApplySuspensionProperties()
+    // Apply the engine properties to the car's front and back wheels
+    private void ApplyEngineProperties()
     {
         if (carController != null)
         {
-            JointSuspension2D frontSuspension = carController.frontWheel.suspension;
-            frontSuspension.dampingRatio = frontWheelDampingRatio;
-            frontSuspension.frequency = frontWheeelFrequency;
-            carController.frontWheel.suspension = frontSuspension;
-            carController.backWheel.suspension = frontSuspension;
+            JointMotor2D frontEngine = carController.frontWheel.motor;
+            frontEngine.maxMotorTorque = frontWheelTorque;
+            carController.speed = frontWheeelPower;
+            carController.frontWheel.motor = frontEngine;
+            carController.backWheel.motor = frontEngine;
 
-            Debug.Log("dampingRatio: " + frontWheelDampingRatio);
-            Debug.Log("Frequency: " + frontWheeelFrequency);
+            Debug.Log("Torque: " + frontWheelTorque);
+            Debug.Log("Power: " + frontWheeelPower);
         }
         else
         {
-            Debug.LogError("CarController component is missing. Make sure to assign the CarController GameObject to the SuspensionManager script in the Inspector.");
+            Debug.LogError("CarController component is missing. Make sure to assign the CarController GameObject to the EngineManager script in the Inspector.");
         }
     }
 
-    // Save the suspension value using PlayerPrefs
-    private void SaveSuspensionValue()
+    // Save the engine value using PlayerPrefs
+    private void SaveEngineValue()
     {
-        suspensionData.DampingRatio = frontWheelDampingRatio;
-        suspensionData.Frequency = frontWheeelFrequency;
-        PlayerPrefs.SetFloat("DamingRatioKey", suspensionData.DampingRatio);
-        PlayerPrefs.SetInt("FrequencyKey", suspensionData.Frequency);
-        string json = JsonUtility.ToJson(suspensionData);
-        PlayerPrefs.SetString(SuspensionKey, json);
+        engineData.MaxTorque = (int)frontWheelTorque;
+        engineData.MaxSpeed = frontWheeelPower;
+        PlayerPrefs.SetInt("TorqueKey", engineData.MaxTorque);
+        PlayerPrefs.SetFloat("PowerKey", engineData.MaxSpeed);
+        string json = JsonUtility.ToJson(engineData);
+        PlayerPrefs.SetString(EngineKey, json);
         PlayerPrefs.Save();
     }
 
-    // Load the suspension value from PlayerPrefs
-    private void LoadSuspensionValue()
+    // Load the engine value from PlayerPrefs
+    private void LoadEngineValue()
     {
-        if (PlayerPrefs.HasKey(SuspensionKey))
+        if (PlayerPrefs.HasKey(EngineKey))
         {
-            frontWheelDampingRatio = PlayerPrefs.GetFloat("DamingRatioKey");
-            frontWheeelFrequency = PlayerPrefs.GetInt("FrequencyKey");
+            frontWheelTorque = PlayerPrefs.GetInt("TorqueKey");
+            frontWheeelPower = PlayerPrefs.GetFloat("PowerKey");
         }
     }
 
     [System.Serializable]
-    public class SuspensionData
+    public class EngineData
     {
-        public int Frequency { get; set; }
-        public float DampingRatio { get; set; }
+        public float MaxSpeed { get; set; }
+        public int MaxTorque { get; set; }
     }
 }

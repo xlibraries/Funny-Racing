@@ -308,10 +308,10 @@ WheelJoint2D:
     m_DampingRatio: 0.1
     m_Frequency: 4
     m_Angle: 90
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 500
 --- !u!235 &6057040769937345939
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -332,10 +332,10 @@ WheelJoint2D:
     m_DampingRatio: 0.1
     m_Frequency: 4
     m_Angle: 90
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 500
 --- !u!114 &6057040769937345937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,12 +349,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startpoint: {fileID: 0}
-  speed: 1200
+  suspensionManager: {fileID: 0}
+  engineManager: {fileID: 0}
+  speed: 400
   rotationSpeed: 400
   backWheel: {fileID: 6057040769937345938}
   frontWheel: {fileID: 6057040769937345939}
   rb: {fileID: 6057040769937345966}
-  suspensionManager: {fileID: 0}
 --- !u!1 &6057040771292807336
 GameObject:
   m_ObjectHideFlags: 0

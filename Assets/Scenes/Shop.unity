@@ -2280,6 +2280,7 @@ GameObject:
   - component: {fileID: 1726715762}
   - component: {fileID: 1726715761}
   - component: {fileID: 1726715760}
+  - component: {fileID: 1726715763}
   m_Layer: 5
   m_Name: Engine
   m_TagString: Untagged
@@ -2352,9 +2353,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 924543811}
-        m_TargetAssemblyTypeName: CarManager, Assembly-CSharp
-        m_MethodName: DowngradeSuspension
+      - m_Target: {fileID: 1726715763}
+        m_TargetAssemblyTypeName: EngineManager, Assembly-CSharp
+        m_MethodName: UpgradeEngine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2402,6 +2403,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726715758}
   m_CullTransparentMesh: 1
+--- !u!114 &1726715763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726715758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bcd151373053245b50e4be9a7d9116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
+  torqueDelta: 2.5
+  powerDelta: 1.5
 --- !u!1 &1732520529
 GameObject:
   m_ObjectHideFlags: 0

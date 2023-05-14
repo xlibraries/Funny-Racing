@@ -2006,6 +2006,7 @@ GameObject:
   - component: {fileID: 1582268000}
   - component: {fileID: 1582267999}
   - component: {fileID: 1582268002}
+  - component: {fileID: 1582268003}
   m_Layer: 0
   m_Name: Reset
   m_TagString: Untagged
@@ -2089,6 +2090,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1582268003}
+        m_TargetAssemblyTypeName: EngineManager, Assembly-CSharp
+        m_MethodName: ResetEngine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1582268000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2140,6 +2153,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
+  dampingDelta: 0.1
+  frequencyDelta: 400
+--- !u!114 &1582268003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582267997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bcd151373053245b50e4be9a7d9116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
+  torqueDelta: 7
+  powerDelta: 1.5
 --- !u!1 &1637453077
 GameObject:
   m_ObjectHideFlags: 0
