@@ -6,13 +6,13 @@ public class EngineManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
-    private int frontWheelTorque;
-    private int initialFrontWheelTorque = 500;
+    private float frontWheelTorque;
+    private float initialFrontWheelTorque = 500;
 
     private float frontWheeelPower;
-    private float initialFrontWheelPower = 4;
+    private float initialFrontWheelPower = 400;
 
-    public int torqueDelta = 7;
+    public float torqueDelta = 7;
     public float powerDelta = 1.5f;
 
     private const string EngineKey = "EngineProperties";
@@ -113,10 +113,10 @@ public class EngineManager : MonoBehaviour
     // Save the engine value using PlayerPrefs
     private void SaveEngineValue()
     {
-        engineData.MaxTorque = frontWheelTorque;
-        engineData.MaxPower = frontWheeelPower;
+        engineData.MaxTorque = (int)frontWheelTorque;
+        engineData.MaxSpeed = frontWheeelPower;
         PlayerPrefs.SetInt("TorqueKey", engineData.MaxTorque);
-        PlayerPrefs.SetFloat("PowerKey", engineData.MaxPower);
+        PlayerPrefs.SetFloat("PowerKey", engineData.MaxSpeed);
         string json = JsonUtility.ToJson(engineData);
         PlayerPrefs.SetString(EngineKey, json);
         PlayerPrefs.Save();
@@ -135,7 +135,7 @@ public class EngineManager : MonoBehaviour
     [System.Serializable]
     public class EngineData
     {
-        public float MaxPower { get; set; }
+        public float MaxSpeed { get; set; }
         public int MaxTorque { get; set; }
     }
 }
