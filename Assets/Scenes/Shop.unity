@@ -2446,8 +2446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
-  torqueDelta: 2.5
-  powerDelta: 1.5
+  torqueDelta: 1.5
+  powerDelta: 1.2
 --- !u!1 &1732520529
 GameObject:
   m_ObjectHideFlags: 0
