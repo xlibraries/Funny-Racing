@@ -1,187 +1,209 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//public class TyreManager : MonoBehaviour
-//{
-//    public CarController carController; // Reference to the CarController GameObject
-
-//    private float frontWheelLinearDrag;
-//    private float initialFrontWheelLinearDrag = 0.1f;
-
-//    private float frontWheelAngularDrag;
-//    private float initialFrontWheelAngularDrag = 0.05f;
-
-//    public float linearDragDelta = 7;
-//    public float angularDragDelta = 1.5f;
-
-//    private const string TyreKey = "TyreProperties";
-
-//    TyreData tyreData = new();
-
-//    public static TyreManager Instance { get; private set; }
-
-//    private void Awake()
-//    {
-//        // Set the Instance reference when the script is initialized
-//        if (Instance == null)
-//        {
-//            Instance = this;
-//        }
-//        else
-//        {
-//            Destroy(gameObject); // Destroy duplicate instances
-//            return;
-//        }
-
-//        // Initialize the TyreManager script
-//        // (e.g., load values, set properties)
-
-//        LoadTyreValue();
-//    }
-
-//    private void Start()
-//    {
-//        ApplyTyreProperties();
-//    }
-
-//    // Initialize the tyre with an initial linearDrag 
-//    public void Initialize(int initialLinearDrag, int initialAngularDrag)
-//    {
-//        frontWheelLinearDrag = initialLinearDrag;
-//        initialFrontWheelLinearDrag = initialLinearDrag;
-//        frontWheelAngularDrag = initialAngularDrag;
-//        initialFrontWheelAngularDrag = initialAngularDrag;
-//    }
-
-//    // Upgrade the tyre by adding a linearDrag delta
-//    public void UpgradeTyre()
-//    {
-//        frontWheelLinearDrag *= linearDragDelta;
-//        frontWheelAngularDrag *= angularDragDelta;
-//        ApplyTyreProperties();
-//        SaveTyreValue();
-//    }
-
-//    // Downgrade the tyre by subtracting a linearDrag delta
-//    public void DowngradeTyre()
-//    {
-//        frontWheelLinearDrag -= linearDragDelta;
-//        frontWheelAngularDrag -= angularDragDelta;
-//        ApplyTyreProperties();
-//        SaveTyreValue();
-//    }
-
-//    // Reset the tyre to its initial linearDrag 
-//    public void ResetTyre()
-//    {
-//        frontWheelLinearDrag = initialFrontWheelLinearDrag;
-//        frontWheelAngularDrag = initialFrontWheelAngularDrag;
-//        ApplyTyreProperties();
-//        SaveTyreValue();
-//    }
-
-//    // Set the tyre linearDrag to a specified value
-//    public void SetTyreData(int linearDrag, int angularDrag)
-//    {
-//        frontWheelLinearDrag = linearDrag;
-//        frontWheelAngularDrag = angularDrag;
-//        ApplyTyreProperties();
-//        SaveTyreValue();
-//    }
-
-//    private void ApplyTyreProperties()
-//    {
-//        if (carController != null)
-//        {
-//            CircleCollider2D frontWheelCollider = carController.frontWheel.GetComponentInChildren<CircleCollider2D>();
-//            Rigidbody2D frontWheelRigidbody = carController.frontWheel.GetComponentInChildren<Rigidbody2D>();
-//            frontWheelRigidbody.drag = frontWheelLinearDrag;
-//            frontWheelRigidbody.angularDrag = frontWheelAngularDrag;
-//            frontWheelCollider.sharedMaterial.friction = frontWheelLinearDrag / 1000f;
-//            frontWheelCollider.sharedMaterial.bounciness = 0f;
-
-//            CircleCollider2D backWheelCollider = carController.backWheel.GetComponentInChildren<CircleCollider2D>();
-//            Rigidbody2D backWheelRigidbody = carController.backWheel.GetComponentInChildren<Rigidbody2D>();
-//            backWheelRigidbody.drag = frontWheelLinearDrag;
-//            backWheelRigidbody.angularDrag = frontWheelAngularDrag;
-//            backWheelCollider.sharedMaterial.friction = frontWheelLinearDrag / 1000f;
-//            backWheelCollider.sharedMaterial.bounciness = 0f;
-
-//            Debug.Log("LinearDrag: " + frontWheelLinearDrag);
-//            Debug.Log("AngularDrag: " + frontWheelAngularDrag);
-//        }
-//        else
-//        {
-//            Debug.LogError("CarController component is missing. Make sure to assign the CarController GameObject to the TyreManager script in the Inspector.");
-//        }
-//    }
-
-
-
-//    // Save the tyre value using PlayerPrefs
-//    private void SaveTyreValue()
-//    {
-//        tyreData.MaxLinearDrag = frontWheelLinearDrag;
-//        tyreData.MaxSpeed = frontWheelAngularDrag;
-//        PlayerPrefs.SetFloat("LinearDragKey", tyreData.MaxLinearDrag);
-//        PlayerPrefs.SetFloat("AngularDragKey", tyreData.MaxSpeed);
-//        string json = JsonUtility.ToJson(tyreData);
-//        PlayerPrefs.SetString(TyreKey, json);
-//        PlayerPrefs.Save();
-//    }
-
-//    // Load the tyre value from PlayerPrefs
-//    private void LoadTyreValue()
-//    {
-//        if (PlayerPrefs.HasKey(TyreKey))
-//        {
-//            frontWheelLinearDrag = PlayerPrefs.GetInt("LinearDragKey");
-//            frontWheelAngularDrag = PlayerPrefs.GetFloat("AngularDragKey");
-//        }
-//    }
-
-//    [System.Serializable]
-//    public class TyreData
-//    {
-//        public float MaxSpeed { get; set; }
-//        public float MaxLinearDrag { get; set; }
-//    }
-//}
 using UnityEngine;
+using static SuspensionManager;
 
 public class TyreManager : MonoBehaviour
 {
-    public GameObject parentPrefab; // Reference to the parent prefab
-    public string childName; // Name of the child object to find
+    public GameObject parentPrefab;
+    public string frontTyreName;
+    public string backTyreName;
 
-    public void Search()
+    public float linearDragDelta = 0.1f;
+    public float angularDragDelta = 0.01f;
+    private float initialFrontLinearDrag = 0.2f;
+    private float initialFrontAngularDrag = 0.01f;
+    private float frontLinearDrag;
+    private float frontAngularDrag;
+
+    private Transform frontTyreTransform;
+    private Transform backTyreTransform;
+    private Rigidbody2D frontTyreRb;
+    private Rigidbody2D backTyreRb;
+
+    private const string TyreKey = "TyreProperties";
+
+    private TyreData tyreData = new();
+
+    public static TyreManager Instance { get; private set; }
+
+    private void Awake()
     {
-
-        // Find the child GameObject by its name
-        Transform childTransform = parentPrefab.transform.Find(childName);
-
-        if (childTransform != null)
+        // Set the Instance reference when the script is initialized
+        if (Instance == null)
         {
-            // Child GameObject found, do something with it
-            GameObject childObject = childTransform.gameObject;
-            Debug.Log("Child GameObject found: " + childObject.name);
-            UpgradeTyre(childObject);
-            Debug.Log("Tyre upgraded!");
+            Instance = this;
         }
         else
         {
-            // Child GameObject not found
+            Destroy(gameObject); // Destroy duplicate instances
+            return;
+        }
+
+        // Initialize the SuspensionManager script
+        // (e.g., load values, set properties)
+
+        LoadTyreValue();
+    }
+
+    private void Start()
+    {
+        GetTyres();
+        ApplyTyreProperties();
+    }
+
+    private void GetTyres()
+    {
+        frontTyreTransform = parentPrefab.transform.Find(frontTyreName);
+        backTyreTransform = parentPrefab.transform.Find(backTyreName);
+
+        if (frontTyreTransform != null && backTyreTransform != null)
+        {
+            frontTyreRb = frontTyreTransform.GetComponent<Rigidbody2D>();
+            backTyreRb = backTyreTransform.GetComponent<Rigidbody2D>();
+
+            Debug.Log("FrontTyre GameObject found: " + frontTyreTransform.name);
+            Debug.Log("BackTyre GameObject found: " + backTyreTransform.name);
+        }
+        else
+        {
             Debug.LogError("Child GameObject not found. Make sure to set the correct name in the ChildGameObjectGetter script.");
         }
     }
 
-    private void UpgradeTyre(GameObject childObject)
+    // Initialize the tyre with an initial Linear Drag & initial Angular Drag
+    public void Initialize(float initialLinearDrag, int initialAngularDrag)
     {
-        Rigidbody2D rb = childObject.transform.GetComponent<Rigidbody2D>();
-        rb.drag += 1;
-        rb.angularDrag += 0.03f;
-        Debug.Log("LinearDrag: " + rb.drag);
-        Debug.Log("AngularDrag: " + rb.angularDrag);
+        frontLinearDrag = initialLinearDrag;
+        initialFrontLinearDrag = initialLinearDrag;
+        frontAngularDrag = initialAngularDrag;
+        initialFrontAngularDrag = initialAngularDrag;
+    }
+
+    public void UpgradeTyre()
+    {
+        ModifyTyreProperties(linearDragDelta, angularDragDelta);
+    }
+
+    public void DowngradeTyre()
+    {
+        ModifyTyreProperties(-linearDragDelta, -angularDragDelta);
+    }
+
+    private void ModifyTyreProperties(float linearDragDelta, float angularDragDelta)
+    {
+        frontLinearDrag += linearDragDelta;
+        frontAngularDrag += angularDragDelta;
+
+        ApplyTyreProperties();
+        SaveTyreValue();
+    }
+
+    public void ResetTyre()
+    {
+        frontLinearDrag = initialFrontLinearDrag;
+        frontAngularDrag = initialFrontAngularDrag;
+
+        ApplyTyreProperties();
+        SaveTyreValue();
+    }
+
+    public void SetTyreData(float linearDrag, float angularDrag)
+    {
+        frontLinearDrag = linearDrag;
+        frontAngularDrag = angularDrag;
+
+        ApplyTyreProperties();
+        SaveTyreValue();
+    }
+
+    private void ApplyTyreProperties()
+    {
+        if (parentPrefab != null)
+        {
+            frontTyreRb.drag = frontLinearDrag;
+            frontTyreRb.angularDrag = frontAngularDrag;
+            backTyreRb.drag = frontLinearDrag;
+            backTyreRb.angularDrag = frontAngularDrag;
+
+            Debug.Log("LinearDrag: " + frontTyreRb.drag);
+            Debug.Log("AngularDrag: " + frontTyreRb.angularDrag);
+        }
+        else
+        {
+            Debug.Log("Parent Prefab component is missing. Make sure to assign the Parent Prefab GameObject to the SuspensionManager script in the Inspector.");
+        }
+    }
+
+    private void SaveTyreValue()
+    {
+        tyreData.LinearDrag = frontLinearDrag;
+        tyreData.AngularDrag = frontAngularDrag;
+        PlayerPrefs.SetFloat("LinerDrag", tyreData.LinearDrag);
+        PlayerPrefs.SetFloat("AngularDrag", tyreData.AngularDrag);
+        string json = JsonUtility.ToJson(tyreData);
+        PlayerPrefs.SetString(TyreKey, json);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadTyreValue()
+    {
+        if (PlayerPrefs.HasKey(TyreKey))
+        {
+            frontLinearDrag = PlayerPrefs.GetFloat("LinerDrag");
+            frontAngularDrag = PlayerPrefs.GetFloat("AngularDrag");
+        }
+    }
+
+    [System.Serializable]
+    public class TyreData
+    {
+        public float LinearDrag { get; set; }
+        public float AngularDrag { get; set; }
     }
 }
+
+
+#region Working Set
+
+//using UnityEngine;
+
+//public class TyreManager : MonoBehaviour
+//{
+//    public GameObject parentPrefab; // Reference to the parent prefab
+//    public string childName; // Name of the child object to find
+
+//    public void Search()
+//    {
+//        // Find the child GameObject by its name
+//        Transform childTransform = parentPrefab.transform.Find(childName);
+//        if (childTransform != null)
+//        {
+//            // Child GameObject found, do something with it
+//            GameObject childObject = childTransform.gameObject;
+//            Debug.Log("Child GameObject found: " + childObject.name);
+//            UpgradeTyre(childObject);
+//            Debug.Log("Tyre upgraded!");
+//        }
+//        else
+//        {
+//            // Child GameObject not found
+//            Debug.LogError("Child GameObject not found. Make sure to set the correct name in the ChildGameObjectGetter script.");
+//        }
+//    }
+
+//    private void UpgradeTyre(GameObject childObject)
+//    {
+//        Rigidbody2D rb = childObject.GetComponent<Rigidbody2D>();
+//        if (rb != null)
+//        {
+//            rb.drag += 1;
+//            rb.angularDrag += 0.03f;
+//            Debug.Log("LinearDrag: " + rb.drag);
+//            Debug.Log("AngularDrag: " + rb.angularDrag);
+//        }
+//        else
+//        {
+//            Debug.LogError("Rigidbody2D component not found on the child GameObject.");
+//        }
+//    }
+//}
+#endregion

@@ -2058,7 +2058,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1384498643}
         m_TargetAssemblyTypeName: TyreManager, Assembly-CSharp
-        m_MethodName: Search
+        m_MethodName: UpgradeTyre
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2119,7 +2119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentPrefab: {fileID: 6057040769937345960, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
-  childName: Wheel_Front
+  frontTyreName: Wheel_Front
+  backTyreName: Wheel_Back
+  linearDragDelta: 0.1
+  angularDragDelta: 0.01
 --- !u!1 &1551777548
 GameObject:
   m_ObjectHideFlags: 0
