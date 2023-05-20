@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CarController : GameManager
 {
@@ -20,10 +21,48 @@ public class CarController : GameManager
     private float movement = 0f;
     private float rotation = 0f;
 
+    private void Start()
+    {
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("Gyroscope not supported on this device.");
+        }
+    }
+
+
     void Update()
     {
-        movement = -Input.GetAxisRaw("Vertical") * speed;
-        rotation = Input.GetAxisRaw("Horizontal");
+        //movement = -Input.GetAxisRaw("Vertical") * speed; //this is used while playing on computer
+        // Check if the screen is touched
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            // Check if the touch is on the left quarter of the screen
+            if (touch.position.x < Screen.width * 0.25f)
+            {
+                movement = speed; // Move backward
+            }
+            // Check if the touch is on the right quarter of the screen
+            else if (touch.position.x > Screen.width * 0.75f)
+            {
+                movement = -speed; // Move forward
+            }
+            else
+            {
+                movement = 0f; // No movement
+            }
+        }
+        else
+        {
+            movement = 0f; // No movement
+        }
+        rotation = Input.GetAxisRaw("Horizontal"); // this be used if paying on computer
+        //rotation = Input.gyro.rotationRate.y; // Use gyroscope input for rotation
         DistanceCovered();
         //FuelManagement();
     }
@@ -52,19 +91,5 @@ public class CarController : GameManager
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
-    }
-
-    // Remove the UpgradeSuspension method
-
-    // Call the UpgradeSuspension method from SuspensionManager
-    public void UpgradeSuspension()
-    {
-        suspensionManager.UpgradeSuspension();
-    }
-
-    // Call the UpgradeEngine method from EngineManager
-    public void UpgradeEngine()
-    {
-        engineManager.UpgradeEngine();
     }
 }

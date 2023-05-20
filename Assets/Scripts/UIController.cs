@@ -6,5 +6,4 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-   
 }

@@ -42,7 +42,7 @@ public class ChasisManager : MonoBehaviour
     }
 
     // Initialize the chasis with an initial damping ratio
-    public void Initialize(float initialDampingRatio, int initialFrequency)
+    public void Initialize(float initialDampingRatio)
     {
         veichelMass = initialDampingRatio;
         initialVeichelMass = initialDampingRatio;
