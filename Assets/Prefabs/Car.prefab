@@ -115,8 +115,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 0.12566371
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.01
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 1602afea266fb7247a8d7d94ae639743, type: 2}
   m_Interpolate: 0
@@ -471,8 +471,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 0.12566371
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.01
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 1602afea266fb7247a8d7d94ae639743, type: 2}
   m_Interpolate: 0
