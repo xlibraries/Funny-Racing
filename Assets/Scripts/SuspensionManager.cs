@@ -58,7 +58,7 @@ public class SuspensionManager : MonoBehaviour
     public void UpgradeSuspension()
     {
         frontWheelDampingRatio += dampingDelta;
-        frontWheeelFrequency += frequencyDelta;
+        frontWheeelFrequency *= frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
@@ -67,7 +67,7 @@ public class SuspensionManager : MonoBehaviour
     public void DowngradeSuspension()
     {
         frontWheelDampingRatio -= dampingDelta;
-        frontWheeelFrequency -= frequencyDelta;
+        frontWheeelFrequency /= frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }

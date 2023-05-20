@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class CarController : GameManager
 {
-    public float speed = 1500;
+    [HideInInspector]
+    public SuspensionManager suspensionManager;
+    [HideInInspector]
+    public EngineManager engineManager;
+
+    public float speed;
     public float rotationSpeed = 15;
     public WheelJoint2D backWheel;
     public WheelJoint2D frontWheel;
     public Rigidbody2D rb;
-    public SuspensionManager suspensionManager;
+
 
     private float movement = 0f;
     private float rotation = 0f;
@@ -55,5 +60,11 @@ public class CarController : GameManager
     public void UpgradeSuspension()
     {
         suspensionManager.UpgradeSuspension();
+    }
+
+    // Call the UpgradeEngine method from EngineManager
+    public void UpgradeEngine()
+    {
+        engineManager.UpgradeEngine();
     }
 }
