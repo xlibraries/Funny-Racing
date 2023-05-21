@@ -61,8 +61,8 @@ public class CarController : GameManager
         {
             movement = 0f; // No movement
         }
-        rotation = Input.GetAxisRaw("Horizontal"); // this be used if paying on computer
-        //rotation = Input.gyro.rotationRate.y; // Use gyroscope input for rotation
+        //rotation = Input.GetAxisRaw("Horizontal"); // this be used if paying on computer
+        rotation = Input.gyro.rotationRate.y; // Use gyroscope input for rotation
         DistanceCovered();
         //FuelManagement();
     }

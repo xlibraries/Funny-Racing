@@ -6,7 +6,7 @@ public class ChasisManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
-    private float veichelMass;
+    [HideInInspector] public float veichelMass;
     private float initialVeichelMass= 0.5f;
 
     public float veichelMassDelta = 0.1f;
