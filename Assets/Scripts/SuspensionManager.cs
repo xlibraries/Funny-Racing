@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,12 @@ public class SuspensionManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
-    private float frontWheelDampingRatio;
+    [HideInInspector]
+    public float frontWheelDampingRatio;
     private float initialFrontWheelDampingRatio = 0.1f;
 
-    private int frontWheeelFrequency;
+    [HideInInspector]
+    public int frontWheeelFrequency;
     private int initialFrontWheelfrequency = 4;
 
     public float dampingDelta = 0.1f;
