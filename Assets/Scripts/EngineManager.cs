@@ -6,10 +6,10 @@ public class EngineManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
-    private float frontWheelTorque;
+    [HideInInspector] public float frontWheelTorque;
     private float initialFrontWheelTorque = 500;
 
-    private float frontWheeelPower;
+    [HideInInspector] public float frontWheeelPower;
     private float initialFrontWheelPower = 400;
 
     public float torqueDelta = 7;
