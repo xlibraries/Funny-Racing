@@ -46,20 +46,25 @@ public class CarController : GameManager
             if (touch.position.x < Screen.width * 0.25f)
             {
                 movement = speed; // Move backward
+                AudioManager.Instance.SetCarMoving(true);
+                
             }
             // Check if the touch is on the right quarter of the screen
             else if (touch.position.x > Screen.width * 0.75f)
             {
                 movement = -speed; // Move forward
+                AudioManager.Instance.SetCarMoving(true);
             }
             else
             {
                 movement = 0f; // No movement
+                AudioManager.Instance.SetCarMoving(false);
             }
         }
         else
         {
             movement = 0f; // No movement
+            AudioManager.Instance.SetCarMoving(false);
         }
         //rotation = Input.GetAxisRaw("Horizontal"); // this be used if paying on computer
         rotation = Input.gyro.rotationRate.y; // Use gyroscope input for rotation
