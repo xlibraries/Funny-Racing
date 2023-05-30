@@ -11,8 +11,8 @@ public class TyreManager : MonoBehaviour
     public float angularDragDelta = 0.01f;
     private float initialFrontLinearDrag = 0.2f;
     private float initialFrontAngularDrag = 0.01f;
-    private float frontLinearDrag;
-    private float frontAngularDrag;
+    [HideInInspector] public float frontLinearDrag;
+    [HideInInspector] public float frontAngularDrag;
 
     private Transform frontTyreTransform;
     private Transform backTyreTransform;
