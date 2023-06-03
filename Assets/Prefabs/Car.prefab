@@ -311,7 +311,7 @@ WheelJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 5695
+    m_MaximumMotorForce: 500
 --- !u!235 &6057040769937345939
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ WheelJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 5695
+    m_MaximumMotorForce: 500
 --- !u!114 &6057040769937345937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ MonoBehaviour:
   startpoint: {fileID: 0}
   suspensionManager: {fileID: 0}
   engineManager: {fileID: 0}
-  speed: 1194.3939
+  speed: 400
   rotationSpeed: 400
   backWheel: {fileID: 6057040769937345938}
   frontWheel: {fileID: 6057040769937345939}
