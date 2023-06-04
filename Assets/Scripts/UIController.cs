@@ -27,7 +27,8 @@ public class UIController : MonoBehaviour
             scriptUpgrades.text = "Suspension: " + suspensionManager.frontWheelDampingRatio + "\n" +
                 "Engine: " + engineManager.frontWheeelPower + "\n" +
                 "Tyre: " + tyreManager.frontLinearDrag + "\n" +
-                "Chasis: " + chasisManager.veichelMass;
+                "Chasis: " + chasisManager.veichelMass + "\n" +
+                "Currency" + CurrencyManager.Instance.GetTotalCurrency(); ;
 
             prefabUpgrades.text = "Suspension: " + carController.frontWheel.suspension + "\n" +
                 "Engine: " + carController.backWheel.motor + "\n" +
@@ -37,7 +38,8 @@ public class UIController : MonoBehaviour
         {
             prefabUpgrades.text = "Suspension: " + carController.frontWheel.suspension.dampingRatio + "\n" +
                 "Engine: " + carController.backWheel.motor.motorSpeed + "\n" +
-                "Chasis: " + carController.GetComponent<Rigidbody2D>().mass;
+                "Chasis: " + carController.GetComponent<Rigidbody2D>().mass + "\n" +
+                "Currency" + CurrencyManager.Instance.GetTotalCurrency();
         }
     }
 }

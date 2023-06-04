@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private float startY;
     private float startZ;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
             Mathf.Pow(distY - startY, 2) +
             Mathf.Pow(distZ - startZ, 2)
             );
+        //CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
         //Debug.Log("Distance Covered: " + distanceCovered);
     }
 
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
         if (collider.CompareTag("Ground"))
         {
             isGrounded = true;
+            CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

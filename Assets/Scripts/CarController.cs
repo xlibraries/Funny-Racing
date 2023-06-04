@@ -60,7 +60,7 @@ public class CarController : GameManager
                 movement = 0f; // No movement
                 AudioManager.Instance.SetCarMoving(false);
             }
-        }
+        }  
         else
         {
             movement = 0f; // No movement
@@ -93,6 +93,7 @@ public class CarController : GameManager
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
+            CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
