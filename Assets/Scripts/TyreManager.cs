@@ -1,5 +1,4 @@
 using UnityEngine;
-using static SuspensionManager;
 
 public class TyreManager : MonoBehaviour
 {
@@ -160,50 +159,3 @@ public class TyreManager : MonoBehaviour
         public float AngularDrag { get; set; }
     }
 }
-
-
-#region Working Set
-
-//using UnityEngine;
-
-//public class TyreManager : MonoBehaviour
-//{
-//    public GameObject parentPrefab; // Reference to the parent prefab
-//    public string childName; // Name of the child object to find
-
-//    public void Search()
-//    {
-//        // Find the child GameObject by its name
-//        Transform childTransform = parentPrefab.transform.Find(childName);
-//        if (childTransform != null)
-//        {
-//            // Child GameObject found, do something with it
-//            GameObject childObject = childTransform.gameObject;
-//            Debug.Log("Child GameObject found: " + childObject.name);
-//            UpgradeTyre(childObject);
-//            Debug.Log("Tyre upgraded!");
-//        }
-//        else
-//        {
-//            // Child GameObject not found
-//            Debug.LogError("Child GameObject not found. Make sure to set the correct name in the ChildGameObjectGetter script.");
-//        }
-//    }
-
-//    private void UpgradeTyre(GameObject childObject)
-//    {
-//        Rigidbody2D rb = childObject.GetComponent<Rigidbody2D>();
-//        if (rb != null)
-//        {
-//            rb.drag += 1;
-//            rb.angularDrag += 0.03f;
-//            Debug.Log("LinearDrag: " + rb.drag);
-//            Debug.Log("AngularDrag: " + rb.angularDrag);
-//        }
-//        else
-//        {
-//            Debug.LogError("Rigidbody2D component not found on the child GameObject.");
-//        }
-//    }
-//}
-#endregion
