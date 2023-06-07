@@ -2179,6 +2179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
+  frontWheelDampingRatio: 0
+  frontWheeelFrequency: 0
   dampingDelta: 0.1
   frequencyDelta: 400
 --- !u!114 &1582268003
@@ -2194,6 +2196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
+  frontWheelTorque: 0
+  frontWheeelPower: 0
   torqueDelta: 7
   powerDelta: 1.5
 --- !u!114 &1582268004
@@ -2213,6 +2217,8 @@ MonoBehaviour:
   backTyreName: Wheel_Back
   linearDragDelta: 0.1
   angularDragDelta: 0.01
+  frontLinearDrag: 0
+  frontAngularDrag: 0
 --- !u!114 &1582268005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,6 +2232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
+  veichelMass: 0
   veichelMassDelta: 0.1
 --- !u!1 &1637453077
 GameObject:
