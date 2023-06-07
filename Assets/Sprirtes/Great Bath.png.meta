@@ -1,0 +1,2051 @@
+fileFormatVersion: 2
+guid: b467f4740094a384bb9d507f2e1d9813
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 1
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 50
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Great Bath_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 4633
+        width: 646
+        height: 306
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93ef7d5ebe35c84697d9d4abfce177f
+      internalID: 663419673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_4
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 4628
+        width: 649
+        height: 303
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d72543b97fc6204faf8ba21be1d8726
+      internalID: 292143594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_8
+      rect:
+        serializedVersion: 2
+        x: 8233
+        y: 4893
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798699161f64c094fa72fd46d9129a04
+      internalID: 1173595012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_9
+      rect:
+        serializedVersion: 2
+        x: 8817
+        y: 27
+        width: 1183
+        height: 4868
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aff9c428ef56384193152bf8a324744
+      internalID: -1574920200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_11
+      rect:
+        serializedVersion: 2
+        x: 6931
+        y: 28
+        width: 1504
+        height: 4857
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8f850115125b54296147f4f65c0796
+      internalID: -1135615450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_12
+      rect:
+        serializedVersion: 2
+        x: 8262
+        y: 4864
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7baa5542252a32d4faa56d8aa7de2dc8
+      internalID: 1383010712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_15
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 3196
+        width: 2179
+        height: 1607
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e764343f3ea4ac44f8ad795bcd61dfae
+      internalID: 2051660970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_16
+      rect:
+        serializedVersion: 2
+        x: 4043
+        y: 3252
+        width: 2952
+        height: 1523
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f336e0819816bb4bb77360dc90a8cbb
+      internalID: 1855904387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_17
+      rect:
+        serializedVersion: 2
+        x: 5537
+        y: 4717
+        width: 1494
+        height: 58
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6876e210786a2594ca2b6b7e15009b1a
+      internalID: 910032916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_25
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 4097
+        width: 998
+        height: 432
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d638dff97086f2e43acaa3238f3f7ec9
+      internalID: 1169071721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_40
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 3724
+        width: 632
+        height: 316
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 874076d39d6298f47b3bbef28e8a1941
+      internalID: 43076442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_41
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 3717
+        width: 647
+        height: 331
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ca7c47edbaa5049a8c3f5cd51ce0d6
+      internalID: 1971344955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_58
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 3172
+        width: 1257
+        height: 432
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa219e66010741743b27d87284993369
+      internalID: -1846039588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_59
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 3487
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e139ee39df286c469ae884322ae251e
+      internalID: 54296608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_60
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 3340
+        width: 29
+        height: 117
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89a347082ad7f2e4a809ebc452f63041
+      internalID: -289658403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_62
+      rect:
+        serializedVersion: 2
+        x: 4014
+        y: 3282
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74309795fd83caa468357adaee9390fe
+      internalID: 1361700388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_63
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 3223
+        width: 29
+        height: 34
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d460de88b7b3ecc4fa0db2322b6b27bc
+      internalID: -1051771213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_64
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 3252
+        width: 204
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efaf1e51ede0e614ea7362784d555ae7
+      internalID: -999492822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_65
+      rect:
+        serializedVersion: 2
+        x: 5567
+        y: 3252
+        width: 1435
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121e3f114dc540f4c804d41651f202c6
+      internalID: -687271168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_66
+      rect:
+        serializedVersion: 2
+        x: 3633
+        y: 3164
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19c020944de31ae4f933ecd6220ff608
+      internalID: 1748047936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_68
+      rect:
+        serializedVersion: 2
+        x: 3750
+        y: 3076
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3dfa31fa3860014c9492e59809a94dc
+      internalID: 938423153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_69
+      rect:
+        serializedVersion: 2
+        x: 4231
+        y: 42
+        width: 1042
+        height: 3036
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b005ab29fd1f05041b4875971d5ce38e
+      internalID: 521491708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_70
+      rect:
+        serializedVersion: 2
+        x: 4658
+        y: 3076
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e65bd8b32c2feff4a935b2b29cad3fed
+      internalID: -1822058865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_74
+      rect:
+        serializedVersion: 2
+        x: 3460
+        y: 27
+        width: 424
+        height: 3042
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a3517d2ef200749b3f0091cdbfa4c3
+      internalID: -1442350541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_75
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2517
+        width: 894
+        height: 474
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 991172791fd626d4e8fbd8e928504765
+      internalID: 150394144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_76
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 2539
+        width: 878
+        height: 444
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ff928866ea5e341bd1328d1ac622a5
+      internalID: -967237408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_77
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 2530
+        width: 454
+        height: 450
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5aa9578fb8cd444a75dbd6dd0a8bf0
+      internalID: -910998662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_81
+      rect:
+        serializedVersion: 2
+        x: 3867
+        y: 2930
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06b4daf24892d84cb0434b1a16b9245
+      internalID: 955276263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_82
+      rect:
+        serializedVersion: 2
+        x: 4190
+        y: 2901
+        width: 28
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184792177b9c6344da1d2aa119ee9041
+      internalID: -1448229054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_83
+      rect:
+        serializedVersion: 2
+        x: 3897
+        y: 2842
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18806475a6c2d684d90234661168c65e
+      internalID: 50032639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_86
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1873
+        width: 3442
+        height: 481
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423b059f806a42c4ab1dc2b8ebf263f8
+      internalID: 1932258080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_87
+      rect:
+        serializedVersion: 2
+        x: 3047
+        y: 2373
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e4b475377c89e4da69019cf013f2fe
+      internalID: -2104954836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_88
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2344
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9af8b3591629442b3f929211a2177b
+      internalID: -201262575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_89
+      rect:
+        serializedVersion: 2
+        x: 3457
+        y: 1875
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54eb6d658a8938141b35d13717d494f4
+      internalID: 1017924389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_90
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 1846
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e509d4fa057d5f94aac23cf82ae4c33b
+      internalID: -1114629114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_91
+      rect:
+        serializedVersion: 2
+        x: 3018
+        y: 1846
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08e93085d6821b42872441582c0569f
+      internalID: 364213624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_92
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 1846
+        width: 58
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b634cb524ec4c84c85239a1bc263571
+      internalID: 177698542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_93
+      rect:
+        serializedVersion: 2
+        x: 5830
+        y: 1846
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2a080764c1b73478036180f4d76115
+      internalID: -731244606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_94
+      rect:
+        serializedVersion: 2
+        x: 5448
+        y: 27
+        width: 1146
+        height: 1792
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a189b8e202999da47b4c8ae3086cd828
+      internalID: -1541580711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_95
+      rect:
+        serializedVersion: 2
+        x: 5948
+        y: 1817
+        width: 28
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374cdb2fa2d71b44ca13f4e18af571ba
+      internalID: -682488359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_96
+      rect:
+        serializedVersion: 2
+        x: 8789
+        y: 1787
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdefa15b15460c74cbf94f1e920de0d2
+      internalID: -510913081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_97
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 1729
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86affec48094ce843ae68adeacfbd81b
+      internalID: -1775615795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_98
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 1729
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f231e1e1662558f4ab360ecb8519bd81
+      internalID: -651970457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_99
+      rect:
+        serializedVersion: 2
+        x: 2373
+        y: 1748
+        width: 88
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d724b71a1fd339b4ea97acff92df88ef
+      internalID: 1241132871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_100
+      rect:
+        serializedVersion: 2
+        x: 2373
+        y: 1739
+        width: 88
+        height: 4
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fddaffeeb39db9488f142cd207282c5
+      internalID: 460191591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_101
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 789
+        width: 608
+        height: 942
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598b6f8ff6fabaf42b6fc4924480da0e
+      internalID: -1951243904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_102
+      rect:
+        serializedVersion: 2
+        x: 2344
+        y: 1724
+        width: 4
+        height: 4
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea1ca2148cc3454a920c507e6645bf4
+      internalID: -1190105822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_103
+      rect:
+        serializedVersion: 2
+        x: 2383
+        y: 1641
+        width: 136
+        height: 87
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2133f57d1bb3ccb4bb9e6016c8a89f0f
+      internalID: 488204248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_104
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 813
+        width: 1132
+        height: 858
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24e005397cb12c540a09a8ca05da7cf2
+      internalID: -1746682923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_105
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 1639
+        width: 32
+        height: 33
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7566ccd93d1d684da72772538b780f0
+      internalID: 796702137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_106
+      rect:
+        serializedVersion: 2
+        x: 1892
+        y: 1663
+        width: 15
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d3c9bbcdbca344d9c13d5f7267783b
+      internalID: -298664443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_107
+      rect:
+        serializedVersion: 2
+        x: 2315
+        y: 1670
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3969fac3bf2532844ab302f5349686a4
+      internalID: 52119963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_108
+      rect:
+        serializedVersion: 2
+        x: 5274
+        y: 1612
+        width: 28
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36675f7cbbf6d2541a4d6fa53ca610fa
+      internalID: -1283566710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_109
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1348
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff0fbb9a193fcb4391039c4f5a2373d
+      internalID: -1671658698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_110
+      rect:
+        serializedVersion: 2
+        x: 2285
+        y: 1348
+        width: 29
+        height: 58
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e58c8f3cb1c2f344e8d257df6b041a1a
+      internalID: -408791043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_111
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1319
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d07947d703393af4f991ea1213719f0f
+      internalID: -144187997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_112
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1289
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0250ed9ed0c6642946e86c5cff84e6
+      internalID: 950831789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_113
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 1143
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9d06bb7715ab24db4355213cd46f12
+      internalID: -56178520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_114
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1026
+        width: 28
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0352034b206b2fb408a07b95c8b0b5f1
+      internalID: 1315385934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_115
+      rect:
+        serializedVersion: 2
+        x: 1465
+        y: 791
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a7865ee8a7d4f4ea4dceb1d2a4430b
+      internalID: 527755793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_116
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 762
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f921cac805a30944872d8f2474292a2
+      internalID: -1655459681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_117
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 762
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa4dc7aedbc6f14581ca00b277d06af
+      internalID: -1653502847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_118
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 762
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084771521cf90e94b8d7afaab9113a1a
+      internalID: -1107811051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_119
+      rect:
+        serializedVersion: 2
+        x: 1817
+        y: 762
+        width: 28
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef4175ac63269ee42a15cc52043bab6e
+      internalID: 570344138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_120
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 733
+        width: 28
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e5b156738a8674889cdde53de11948
+      internalID: 975078331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_121
+      rect:
+        serializedVersion: 2
+        x: 5274
+        y: 733
+        width: 28
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 151f6c2f929f38a4fa91149e282695bb
+      internalID: -1028198387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_122
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 708
+        width: 58
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b93b08eaf37d124bbcdc10960c8377d
+      internalID: 296308747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_123
+      rect:
+        serializedVersion: 2
+        x: 2285
+        y: 674
+        width: 58
+        height: 58
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7d23bc4542afe241aa58dd866606b9c
+      internalID: 782563317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_124
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 674
+        width: 29
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc187a965eb42484494663dbb7223ff4
+      internalID: -741312186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_125
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 59
+        width: 2305
+        height: 646
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac10bfa46bfccbb4f8580081a743aa48
+      internalID: 706640405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 652
+        width: 12
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d50834c926815645aee40b23e5e031c
+      internalID: 807470499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_127
+      rect:
+        serializedVersion: 2
+        x: 3807
+        y: 350
+        width: 111
+        height: 92
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5443bd562fc1e4bb779d4d313a29ac
+      internalID: 603984109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_128
+      rect:
+        serializedVersion: 2
+        x: 3955
+        y: 440
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f55a7902992a440a00ed7ebd163929
+      internalID: -640804990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_129
+      rect:
+        serializedVersion: 2
+        x: 5242
+        y: 380
+        width: 62
+        height: 61
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03db99dd8be88924dad6db4c813c9f7b
+      internalID: -220677287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_130
+      rect:
+        serializedVersion: 2
+        x: 5303
+        y: 440
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d0bb21792a16b4aaf13c94128ac0c2
+      internalID: -232774700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_131
+      rect:
+        serializedVersion: 2
+        x: 3928
+        y: 384
+        width: 24
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 861bdd8f5d9d6714c9dbd3a29f3d76c4
+      internalID: -465196584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_132
+      rect:
+        serializedVersion: 2
+        x: 9991
+        y: 410
+        width: 9
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63475675b4427014ea9e2d9c9d90ddde
+      internalID: -1440646262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_133
+      rect:
+        serializedVersion: 2
+        x: 8789
+        y: 88
+        width: 29
+        height: 88
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d33b6bb81615a4e8e0673e2a5f9f2b
+      internalID: 410199361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_134
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 30
+        width: 29
+        height: 28
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c06154051478143af250088b1ddabe
+      internalID: 1898210442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_135
+      rect:
+        serializedVersion: 2
+        x: 2293
+        y: 56
+        width: 9
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7696648a6588a147ab97fc7919e1af6
+      internalID: -750510746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_136
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 30
+        width: 1112
+        height: 23
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bf3309e457d711448f9210f76a0ec69
+      internalID: -1293353150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_137
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 30
+        width: 175
+        height: 23
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd607eafe7bc5e4daafb0c1be5e51a8
+      internalID: -465366268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_138
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 30
+        width: 176
+        height: 23
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a2b096eb57d654fbb6e43e03fd6426
+      internalID: 1225043894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Great Bath_139
+      rect:
+        serializedVersion: 2
+        x: 6912
+        y: 28
+        width: 23
+        height: 23
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1d15faafa21db4dbe97dbe386e8c4d
+      internalID: -1140364129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Great Bath_85: 720650796
+      Great Bath_80: -604192813
+      Great Bath_10: -2031375082
+      Great Bath_70: -1822058865
+      Great Bath_126: 807470499
+      Great Bath_8: 1173595012
+      Great Bath_88: -201262575
+      Great Bath_63: -1051771213
+      Great Bath_130: -232774700
+      Great Bath_54: 982337562
+      Great Bath_133: 410199361
+      Great Bath_135: -750510746
+      Great Bath_67: -488447825
+      Great Bath_40: 43076442
+      Great Bath_120: 975078331
+      Great Bath_27: -998499393
+      Great Bath_66: 1748047936
+      Great Bath_77: -910998662
+      Great Bath_52: 273653924
+      Great Bath_137: -465366268
+      Great Bath_34: 1384967021
+      Great Bath_42: 1568247300
+      Great Bath_105: 796702137
+      Great Bath_93: -731244606
+      Great Bath_138: 1225043894
+      Great Bath_14: 835432311
+      Great Bath_49: -1353678447
+      Great Bath_44: 110395652
+      Great Bath_115: 527755793
+      Great Bath_79: -1579582554
+      Great Bath_97: -1775615795
+      Great Bath_32: -1100966014
+      Great Bath_104: -1746682923
+      Great Bath_78: 814557442
+      Great Bath_24: -1554943114
+      Great Bath_122: 296308747
+      Great Bath_123: 782563317
+      Great Bath_109: -1671658698
+      Great Bath_30: -1782733964
+      Great Bath_9: -1574920200
+      Great Bath_48: 405879196
+      Great Bath_84: 1913962416
+      Great Bath_12: 1383010712
+      Great Bath_21: 2056966281
+      Great Bath_18: 1897360510
+      Great Bath_62: 1361700388
+      Great Bath_132: -1440646262
+      Great Bath_6: 119767846
+      Great Bath_124: -741312186
+      Great Bath_38: -870057386
+      Great Bath_46: -2138543748
+      Great Bath_0: 309508064
+      Great Bath_23: 1762449826
+      Great Bath_90: -1114629114
+      Great Bath_92: 177698542
+      Great Bath_134: 1898210442
+      Great Bath_2: 767569690
+      Great Bath_116: -1655459681
+      Great Bath_60: -289658403
+      Great Bath_28: 376278211
+      Great Bath_26: -2076217004
+      Great Bath_119: 570344138
+      Great Bath_107: 52119963
+      Great Bath_25: 1169071721
+      Great Bath_94: -1541580711
+      Great Bath_98: -651970457
+      Great Bath_108: -1283566710
+      Great Bath_129: -220677287
+      Great Bath_3: 663419673
+      Great Bath_69: 521491708
+      Great Bath_110: -408791043
+      Great Bath_121: -1028198387
+      Great Bath_100: 460191591
+      Great Bath_43: -436381164
+      Great Bath_99: 1241132871
+      Great Bath_68: 938423153
+      Great Bath_19: -771789997
+      Great Bath_31: -602598064
+      Great Bath_4: 292143594
+      Great Bath_15: 2051660970
+      Great Bath_56: 1321900003
+      Great Bath_76: -967237408
+      Great Bath_103: 488204248
+      Great Bath_51: 1559860767
+      Great Bath_112: 950831789
+      Great Bath_113: -56178520
+      Great Bath_1: 1574608767
+      Great Bath_45: -1632617348
+      Great Bath_59: 54296608
+      Great Bath_72: -924497962
+      Great Bath_87: -2104954836
+      Great Bath_75: 150394144
+      Great Bath_136: -1293353150
+      Great Bath_57: 785735112
+      Great Bath_95: -682488359
+      Great Bath_106: -298664443
+      Great Bath_139: -1140364129
+      Great Bath_114: 1315385934
+      Great Bath_91: 364213624
+      Great Bath_118: -1107811051
+      Great Bath_7: -1529538626
+      Great Bath_127: 603984109
+      Great Bath_131: -465196584
+      Great Bath_125: 706640405
+      Great Bath_29: -521279046
+      Great Bath_22: -1297627382
+      Great Bath_81: 955276263
+      Great Bath_33: -132932645
+      Great Bath_17: 910032916
+      Great Bath_13: 162386469
+      Great Bath_117: -1653502847
+      Great Bath_20: -970705297
+      Great Bath_65: -687271168
+      Great Bath_128: -640804990
+      Great Bath_41: 1971344955
+      Great Bath_16: 1855904387
+      Great Bath_82: -1448229054
+      Great Bath_89: 1017924389
+      Great Bath_111: -144187997
+      Great Bath_55: 931036432
+      Great Bath_64: -999492822
+      Great Bath_71: 565091506
+      Great Bath_37: -842834146
+      Great Bath_50: 1314724376
+      Great Bath_102: -1190105822
+      Great Bath_47: -1366522627
+      Great Bath_36: -245194752
+      Great Bath_86: 1932258080
+      Great Bath_53: -1834653697
+      Great Bath_101: -1951243904
+      Great Bath_58: -1846039588
+      Great Bath_11: -1135615450
+      Great Bath_35: 971059345
+      Great Bath_83: 50032639
+      Great Bath_74: -1442350541
+      Great Bath_39: -832433436
+      Great Bath_5: 2121733532
+      Great Bath_96: -510913081
+      Great Bath_73: 2097646975
+      Great Bath_61: 1528315527
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
