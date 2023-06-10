@@ -29,4 +29,4 @@ jobs:
       - name: Build and run script
         run: |
           dotnet build -c Release
-          dotnet run --project FunnyRacing/FunnyRacing.csproj
+          dotnet run --project FunnyRacing/Assembly-CSharp.csproj
