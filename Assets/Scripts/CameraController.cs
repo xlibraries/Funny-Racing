@@ -2,18 +2,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private GameObject targetPrefab;
-
-    private void Start()
-    {
-        targetPrefab = GameObject.Find("Car"); // Assuming "Car" is the name of the instantiated prefab
-    }
+    public string carObjectName = "Car";
 
     private void FixedUpdate()
     {
-        if (targetPrefab != null)
+        GameObject carObject = GameObject.Find(carObjectName);
+        if (carObject != null)
         {
-            Vector3 newPosition = targetPrefab.transform.position;
+            Vector3 newPosition = carObject.transform.position;
             newPosition.z = -10;
             transform.position = newPosition;
         }

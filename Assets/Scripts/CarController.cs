@@ -104,4 +104,9 @@ public class CarController : MonoBehaviour
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        gameManager.OnTriggerEnter2D(collider);
+    }
 }

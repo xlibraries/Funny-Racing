@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     public GameObject carPrefab;
 
     //Parameters for fuel management system
-    private const float fuelCapacity = 10.0f;
+    public const float fuelCapacity = 10.0f;
     public static float fuelPresent;
     private const float BurnRate = 1.0f;
+    private GameObject instantiatedCar;
 
 
     //Paraments for distance calculation
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject instantiatedCar = Instantiate(carPrefab);
+        instantiatedCar = Instantiate(carPrefab);
         instantiatedCar.name = "Car";
         CarController carController = instantiatedCar.GetComponent<CarController>();
         carController.SetGameManager(this);
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Fuel Present: " + fuelPresent);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Ground"))
         {
