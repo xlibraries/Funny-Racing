@@ -1,4 +1,3 @@
-
 name: Generate Blog Post
 
 on:
@@ -23,10 +22,9 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '7.0.103'  # Change to your preferred .NET Core version
-          node-version: '16.x'
 
       - name: Build and run script
         run: |
-          cd Funny Racing  # Replace <path-to-project> with the relative path to your .NET project directory
+          cd G:\2023\Funny Racing
           dotnet build -c Release
-          dotnet run --project FunnyRacing/FunnyRacing.csproj
+          dotnet run --project FunnyRacing.csproj
