@@ -89,7 +89,7 @@ public class ChasisManager : MonoBehaviour
             rb.mass = veichelMass;
             carController.rb.mass= veichelMass;
 
-            Debug.Log("veichelMassRatio: " + veichelMass);
+            //Debug.Log("veichelMassRatio: " + veichelMass);
         }
         else
         {

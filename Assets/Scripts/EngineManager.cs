@@ -101,8 +101,8 @@ public class EngineManager : MonoBehaviour
             carController.frontWheel.motor = frontEngine;
             carController.backWheel.motor = frontEngine;
 
-            Debug.Log("Torque: " + frontWheelTorque);
-            Debug.Log("Power: " + frontWheeelPower);
+            //Debug.Log("Torque: " + frontWheelTorque);
+            //Debug.Log("Power: " + frontWheeelPower);
         }
         else
         {

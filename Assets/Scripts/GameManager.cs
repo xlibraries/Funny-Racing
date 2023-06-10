@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     */
     public Transform startpoint;
     public static bool isGrounded;
+    public GameObject carPrefab;
 
     //Parameters for fuel management system
     private const float fuelCapacity = 10.0f;
@@ -26,10 +27,13 @@ public class GameManager : MonoBehaviour
     private float startY;
     private float startZ;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        GameObject instantiatedCar = Instantiate(carPrefab);
+        instantiatedCar.name = "Car";
+        CarController carController = instantiatedCar.GetComponent<CarController>();
+        carController.SetGameManager(this);
         fuelPresent = fuelCapacity;
         isGrounded = false;
         //Debug.Log("Fuel present on start: " + fuelPresent);

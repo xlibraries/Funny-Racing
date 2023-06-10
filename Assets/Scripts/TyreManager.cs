@@ -59,8 +59,8 @@ public class TyreManager : MonoBehaviour
             frontTyreRb = frontTyreTransform.GetComponent<Rigidbody2D>();
             backTyreRb = backTyreTransform.GetComponent<Rigidbody2D>();
 
-            Debug.Log("FrontTyre GameObject found: " + frontTyreTransform.name);
-            Debug.Log("BackTyre GameObject found: " + backTyreTransform.name);
+            //Debug.Log("FrontTyre GameObject found: " + frontTyreTransform.name);
+            //Debug.Log("BackTyre GameObject found: " + backTyreTransform.name);
         }
         else
         {
@@ -123,12 +123,12 @@ public class TyreManager : MonoBehaviour
             backTyreRb.drag = frontLinearDrag;
             backTyreRb.angularDrag = frontAngularDrag;
 
-            Debug.Log("LinearDrag: " + frontTyreRb.drag);
-            Debug.Log("AngularDrag: " + frontTyreRb.angularDrag);
+            //Debug.Log("LinearDrag: " + frontTyreRb.drag);
+            //Debug.Log("AngularDrag: " + frontTyreRb.angularDrag);
         }
         else
         {
-            Debug.Log("Parent Prefab component is missing. Make sure to assign the Parent Prefab GameObject to the SuspensionManager script in the Inspector.");
+            Debug.LogError("Parent Prefab component is missing. Make sure to assign the Parent Prefab GameObject to the SuspensionManager script in the Inspector.");
         }
     }
 
