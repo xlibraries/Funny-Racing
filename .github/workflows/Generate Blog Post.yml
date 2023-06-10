@@ -1,9 +1,10 @@
+
 name: Generate Blog Post
 
 on:
   push:
     branches:
-      - main  # Change this if your main branch has a different name
+      - gh-pages  # Change this if your main branch has a different name
 
 jobs:
   generate-blog-post:
@@ -26,5 +27,6 @@ jobs:
 
       - name: Build and run script
         run: |
+          cd Funny Racing  # Replace <path-to-project> with the relative path to your .NET project directory
           dotnet build -c Release
           dotnet run --project FunnyRacing/FunnyRacing.csproj
