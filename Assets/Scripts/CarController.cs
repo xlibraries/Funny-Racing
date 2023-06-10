@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class CarController : GameManager
+public class CarController : MonoBehaviour
 {
     [HideInInspector]
     public SuspensionManager suspensionManager;
@@ -20,6 +20,8 @@ public class CarController : GameManager
 
     private float movement = 0f;
     private float rotation = 0f;
+    private GameManager gameManager;
+
 
     private void Start()
     {
@@ -33,6 +35,10 @@ public class CarController : GameManager
         }
     }
 
+    public void SetGameManager(GameManager manager)
+    {
+        gameManager = manager;
+    }
 
     void Update()
     {
@@ -68,13 +74,13 @@ public class CarController : GameManager
         }
         //rotation = Input.GetAxisRaw("Horizontal"); // this be used if paying on computer
         rotation = Input.gyro.rotationRate.y; // Use gyroscope input for rotation
-        DistanceCovered();
+        gameManager.DistanceCovered();
         //FuelManagement();
     }
 
     void FixedUpdate()
     {
-        if (movement == 0 || fuelPresent <= 0)
+        if (movement == 0 ||GameManager.fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
@@ -83,19 +89,24 @@ public class CarController : GameManager
         {
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
-            FuelManagement();
+           gameManager.FuelManagement();
             //UpgradeSuspension();
             JointMotor2D motor = new JointMotor2D { motorSpeed = movement, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
         }
-        if (fuelPresent <= 0)
+        if (GameManager.fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
-            CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
+            CurrencyManager.Instance.AddBaseCurrency(GameManager.distanceCovered); //will add base currency as per every 100m distance covered rule
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        gameManager.OnTriggerEnter2D(collider);
     }
 }

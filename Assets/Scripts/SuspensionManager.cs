@@ -104,8 +104,8 @@ public class SuspensionManager : MonoBehaviour
             carController.frontWheel.suspension = frontSuspension;
             carController.backWheel.suspension = frontSuspension;
 
-            Debug.Log("dampingRatio: " + frontWheelDampingRatio);
-            Debug.Log("Frequency: " + frontWheeelFrequency);
+            //Debug.Log("dampingRatio: " + frontWheelDampingRatio);
+            //Debug.Log("Frequency: " + frontWheeelFrequency);
         }
         else
         {
