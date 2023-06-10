@@ -23,8 +23,10 @@ jobs:
         with:
           dotnet-version: '7.0.103'  # Change to your preferred .NET Core version
 
+      - name: Install dependencies
+        run: dotnet restore
+
       - name: Build and run script
         run: |
-          cd G:\2023\Funny Racing
           dotnet build -c Release
-          dotnet run --project FunnyRacing.csproj
+          dotnet run --project FunnyRacing/Assembly-CSharp.csproj
