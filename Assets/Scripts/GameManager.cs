@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     */
     public Transform startpoint;
     public static bool isGrounded;
+    public GameObject carPrefab;
 
     //Parameters for fuel management system
-    private const float fuelCapacity = 10.0f;
+    public const float fuelCapacity = 10.0f;
     public static float fuelPresent;
     private const float BurnRate = 1.0f;
+    private GameObject instantiatedCar;
 
 
     //Paraments for distance calculation
@@ -29,6 +31,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instantiatedCar = Instantiate(carPrefab);
+        instantiatedCar.name = "Car";
+        CarController carController = instantiatedCar.GetComponent<CarController>();
+        carController.SetGameManager(this);
         fuelPresent = fuelCapacity;
         isGrounded = false;
         //Debug.Log("Fuel present on start: " + fuelPresent);
@@ -48,6 +54,7 @@ public class GameManager : MonoBehaviour
             Mathf.Pow(distY - startY, 2) +
             Mathf.Pow(distZ - startZ, 2)
             );
+        //CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
         //Debug.Log("Distance Covered: " + distanceCovered);
     }
 
@@ -57,11 +64,12 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Fuel Present: " + fuelPresent);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Ground"))
         {
             isGrounded = true;
+            CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 

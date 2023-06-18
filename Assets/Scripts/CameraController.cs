@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;
+    public string carObjectName = "Car";
 
     private void FixedUpdate()
     {
-        Vector3 newPosition = target.position; ;
-        newPosition.z = -10;
-        transform.position = newPosition;
+        GameObject carObject = GameObject.Find(carObjectName);
+        if (carObject != null)
+        {
+            Vector3 newPosition = carObject.transform.position;
+            newPosition.z = -10;
+            transform.position = newPosition;
+        }
     }
 }

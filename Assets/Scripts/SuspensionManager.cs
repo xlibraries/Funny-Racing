@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,12 @@ public class SuspensionManager : MonoBehaviour
 {
     public CarController carController; // Reference to the CarController GameObject
 
-    private float frontWheelDampingRatio;
+    [HideInInspector]
+    public float frontWheelDampingRatio;
     private float initialFrontWheelDampingRatio = 0.1f;
 
-    private int frontWheeelFrequency;
+    [HideInInspector]
+    public int frontWheeelFrequency;
     private int initialFrontWheelfrequency = 4;
 
     public float dampingDelta = 0.1f;
@@ -58,7 +61,7 @@ public class SuspensionManager : MonoBehaviour
     public void UpgradeSuspension()
     {
         frontWheelDampingRatio += dampingDelta;
-        frontWheeelFrequency *= frequencyDelta;
+        frontWheeelFrequency += frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
@@ -67,7 +70,7 @@ public class SuspensionManager : MonoBehaviour
     public void DowngradeSuspension()
     {
         frontWheelDampingRatio -= dampingDelta;
-        frontWheeelFrequency /= frequencyDelta;
+        frontWheeelFrequency -= frequencyDelta;
         ApplySuspensionProperties();
         SaveSuspensionValue();
     }
@@ -101,8 +104,8 @@ public class SuspensionManager : MonoBehaviour
             carController.frontWheel.suspension = frontSuspension;
             carController.backWheel.suspension = frontSuspension;
 
-            Debug.Log("dampingRatio: " + frontWheelDampingRatio);
-            Debug.Log("Frequency: " + frontWheeelFrequency);
+            //Debug.Log("dampingRatio: " + frontWheelDampingRatio);
+            //Debug.Log("Frequency: " + frontWheeelFrequency);
         }
         else
         {
