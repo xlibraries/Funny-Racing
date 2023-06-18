@@ -1,27 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-    [HideInInspector]
-    public SuspensionManager suspensionManager;
-    [HideInInspector]
-    public EngineManager engineManager;
+    [SerializeField] private SuspensionManager suspensionManager;
+    [SerializeField] private EngineManager engineManager;
 
     public float speed;
-    public float rotationSpeed = 15;
+    public float rotationSpeed = 10f;
+    public float rotationDampening = 10f; // Adjust this value to control the dampening effect
     public WheelJoint2D backWheel;
     public WheelJoint2D frontWheel;
     public Rigidbody2D rb;
 
-
+    #region Movement Variables
     private float movement = 0f;
+    private float currentRotationVelocity = 0f; // Tracks the current rotational velocity
     private float rotation = 0f;
+    private float rotationInput = 0f;
+    private float rotationInputThreshold;
+    private float clampedRotation;
+    private float targetRotation;
+    #endregion
+
+
     private GameManager gameManager;
 
+    private const float MaxRotation = 10f;
 
     private void Start()
     {
@@ -40,47 +45,53 @@ public class CarController : MonoBehaviour
         gameManager = manager;
     }
 
-    void Update()
+    private void Update()
     {
-        //movement = -Input.GetAxisRaw("Vertical") * speed; //this is used while playing on computer
-        // Check if the screen is touched
+        HandleInput();
+        gameManager.DistanceCovered();
+    }
+
+    private void HandleInput()
+    {
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+            rotationInputThreshold = 0.8f;
 
-            // Check if the touch is on the left quarter of the screen
             if (touch.position.x < Screen.width * 0.25f)
             {
                 movement = speed; // Move backward
+                rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
                 AudioManager.Instance.SetCarMoving(true);
-                
             }
-            // Check if the touch is on the right quarter of the screen
             else if (touch.position.x > Screen.width * 0.75f)
             {
                 movement = -speed; // Move forward
+                rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
                 AudioManager.Instance.SetCarMoving(true);
             }
             else
             {
                 movement = 0f; // No movement
+                rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
                 AudioManager.Instance.SetCarMoving(false);
             }
-        }  
+        }
         else
         {
+            rotationInputThreshold = 0.5f;
+            rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
             movement = 0f; // No movement
             AudioManager.Instance.SetCarMoving(false);
         }
-        //rotation = Input.GetAxisRaw("Horizontal"); // this be used if paying on computer
-        rotation = Input.gyro.rotationRate.y; // Use gyroscope input for rotation
-        gameManager.DistanceCovered();
-        //FuelManagement();
+        clampedRotation = Mathf.Clamp(rotationInput, -MaxRotation, MaxRotation);
+        targetRotation = clampedRotation * rotationSpeed;
+        rotation = Mathf.SmoothDamp(rotation, targetRotation, ref currentRotationVelocity, 1f / rotationDampening);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (movement == 0 ||GameManager.fuelPresent <= 0)
+        if (movement == 0 || GameManager.fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
@@ -89,20 +100,22 @@ public class CarController : MonoBehaviour
         {
             backWheel.useMotor = true;
             frontWheel.useMotor = true;
-           gameManager.FuelManagement();
-            //UpgradeSuspension();
+            gameManager.FuelManagement();
+
             JointMotor2D motor = new JointMotor2D { motorSpeed = movement, maxMotorTorque = backWheel.motor.maxMotorTorque };
             backWheel.motor = motor;
             frontWheel.motor = motor;
         }
+
         if (GameManager.fuelPresent <= 0)
         {
             backWheel.useMotor = false;
             frontWheel.useMotor = false;
-            CurrencyManager.Instance.AddBaseCurrency(GameManager.distanceCovered); //will add base currency as per every 100m distance covered rule
+            CurrencyManager.Instance.AddBaseCurrency(GameManager.distanceCovered);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        rb.AddTorque(-rotation * rotationSpeed * Time.fixedDeltaTime);
+
+        rb.AddTorque(-rotation * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
