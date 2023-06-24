@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
 
     public void DistanceCovered()
     {
-        distX = this.transform.position.x;
-        distY = this.transform.position.y;
-        distZ = this.transform.position.z;
+        distX = instantiatedCar.transform.position.x;
+        distY = instantiatedCar.transform.position.y;
+        distZ = instantiatedCar.transform.position.z;
 
         distanceCovered = Mathf.Sqrt(
             Mathf.Pow(distX - startX, 2) +
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         {
             isGrounded = true;
             CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
+            Debug.Log("Currency: " + CurrencyManager.Instance.GetTotalCurrency());
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
