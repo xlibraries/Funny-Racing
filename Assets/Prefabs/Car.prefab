@@ -354,6 +354,7 @@ MonoBehaviour:
   engineManager: {fileID: 0}
   speed: 400
   rotationSpeed: 400
+  rotationDampening: 10
   backWheel: {fileID: 6057040769937345938}
   frontWheel: {fileID: 6057040769937345939}
   rb: {fileID: 6057040769937345966}

@@ -82,6 +82,16 @@ public class CurrencyManager : MonoBehaviour
         SaveTotalAmount();
     }
 
+    public bool AllowUpgrade(int amountrequired)
+    {
+        if (totalCurrency - amountrequired >= 0)
+        {
+            totalCurrency -= amountrequired;
+            SaveTotalAmount();
+        }
+        return totalCurrency >= amountrequired;
+    }
+
     // Function to save the current total currency
     private void SaveTotalAmount()
     {
