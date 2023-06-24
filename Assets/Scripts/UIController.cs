@@ -29,7 +29,7 @@ public class UIController : MonoBehaviour
                               "Chassis: Mass: " + rb2D.mass + "\n" +
                               "Currency: " + CurrencyManager.Instance.GetTotalCurrency();
 
-        Debug.LogWarning(prefabUpgrades.text);
+        //Debug.LogWarning(prefabUpgrades.text);
     }
 
 }
