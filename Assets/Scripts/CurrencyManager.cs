@@ -4,7 +4,8 @@ using static TyreManager;
 public class CurrencyManager : MonoBehaviour
 {
     public int baseCurrencyPer100Meters = 10; // Base currency earned per 100 meters traveled
-    public int comboStuntCurrency = 50; // Currency earned for successful combo stunts
+    public int backflipCurrency = 50; // Currency earned for successful combo stunts
+    public int frontflipCurrency = 50; // Currency earned for successful combo stunts
     public int hiddenCollectibleCurrency = 100; // Currency earned for collecting hidden collectibles
 
     private int totalCurrency = 0; // Total currency earned
@@ -12,6 +13,8 @@ public class CurrencyManager : MonoBehaviour
     private static CurrencyManager instance; // Create a static instance of the CurrencyManager class
     private const string CurrencyKey = "Money"; // Key to store the total currency in PlayerPrefs
     private TotalAmount totalAmount = new(); // Create a new instance of the TotalAmount class
+
+    private CarController carController;
 
     public static CurrencyManager Instance
     {
@@ -46,7 +49,14 @@ public class CurrencyManager : MonoBehaviour
     // Function to add currency for successful combo stunts
     public void AddComboStuntCurrency()
     {
-        totalCurrency += comboStuntCurrency;
+        if (carController.CheckFlip() == 1)
+        {
+            totalCurrency += frontflipCurrency;
+        }
+        else if (carController.CheckFlip() == -1)
+        {
+            totalCurrency += backflipCurrency;
+        }
         SaveTotalAmount();
     }
 

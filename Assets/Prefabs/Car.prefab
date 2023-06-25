@@ -350,8 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71f42e211267d6468c8143a805d2c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspensionManager: {fileID: 0}
-  engineManager: {fileID: 0}
   speed: 400
   rotationSpeed: 10
   rotationDampening: 10

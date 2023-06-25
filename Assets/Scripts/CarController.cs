@@ -3,15 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
-    [SerializeField] private SuspensionManager suspensionManager;
-    [SerializeField] private EngineManager engineManager;
-
     public float speed;
     public float rotationSpeed = 10f;
     public float rotationDampening = 10f; // Adjust this value to control the dampening effect
     public WheelJoint2D backWheel;
     public WheelJoint2D frontWheel;
     public Rigidbody2D rb;
+    public static bool isGrounded;
 
     #region Movement Variables
     private float movement = 0f;
@@ -25,7 +23,9 @@ public class CarController : MonoBehaviour
 
 
     private GameManager gameManager;
-
+    private Quaternion initialRotation;
+    private bool isBackWheelTouchingGround = false;
+    private bool isFrontWheelTouchingGround = false;
     private const float MaxRotation = 10f;
 
     private void Start()
@@ -38,6 +38,10 @@ public class CarController : MonoBehaviour
         {
             Debug.LogError("Gyroscope not supported on this device.");
         }
+
+        // Store the initial rotation of the car
+        initialRotation = this.transform.rotation;
+        isGrounded = false;
     }
 
     public void SetGameManager(GameManager manager)
@@ -116,10 +120,81 @@ public class CarController : MonoBehaviour
         }
 
         rb.AddTorque(-rotation * Time.fixedDeltaTime);
+
+        // Check if both back and front wheels are not touching the ground
+        if (!isBackWheelTouchingGround && !isFrontWheelTouchingGround)
+        {
+            //Debug.Log("CheckFlip()");
+            CheckFlip();
+            // Handle the flip result as needed
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        gameManager.OnTriggerEnter2D(collider);
+        if (collider.gameObject == backWheel.GetComponentInChildren<CircleCollider2D>().gameObject)
+        {
+            isBackWheelTouchingGround = true;
+        }
+        else if (collider.gameObject == frontWheel.GetComponentInChildren<CircleCollider2D>().gameObject)
+        {
+            isFrontWheelTouchingGround = true;
+        }
+
+        if (collider.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            CurrencyManager.Instance.AddBaseCurrency(GameManager.distanceCovered); // Add base currency as per every 100m distance covered rule
+            Debug.Log("Currency: " + CurrencyManager.Instance.GetTotalCurrency());
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (collider.CompareTag("Fuel"))
+        {
+            GameManager.fuelPresent = GameManager.fuelCapacity;
+            Debug.Log("Fuel Refilled " + GameManager.fuelPresent);
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject == backWheel.GetComponent<WheelCollider>().gameObject)
+        {
+            isBackWheelTouchingGround = false;
+        }
+        else if (collider.gameObject == frontWheel.GetComponent<WheelCollider>().gameObject)
+        {
+            isFrontWheelTouchingGround = false;
+        }
+
+    }
+
+    public int CheckFlip()
+    {
+        // Calculate the rotation difference between the current rotation and the initial rotation
+        Quaternion currentRotation = this.transform.rotation;
+        Quaternion rotationDifference = Quaternion.Inverse(initialRotation) * currentRotation;
+
+        // Calculate the angle of rotation around the forward axis (x-axis)
+        float flipAngle = Quaternion.Angle(rotationDifference, Quaternion.identity);
+
+        // Check if a backflip or front flip was made based on the flip angle threshold
+        if (flipAngle > 180f)
+        {
+            // Backflip detected
+            Debug.Log("Backflip");
+            return -1;
+        }
+        else if (flipAngle < -180f)
+        {
+            // Front flip detected
+            Debug.Log("Front Flip");
+            return 1;
+        }
+
+        // No flip detected
+        return 0;
     }
 }
