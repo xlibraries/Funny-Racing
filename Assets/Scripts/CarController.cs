@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class CarController : MonoBehaviour
 {
+    [SerializeField] private SuspensionManager suspensionManager;
+    [SerializeField] private EngineManager engineManager;
+
     public float speed;
     public float rotationSpeed = 10f;
     public float rotationDampening = 10f; // Adjust this value to control the dampening effect
@@ -181,13 +184,13 @@ public class CarController : MonoBehaviour
         float flipAngle = Quaternion.Angle(rotationDifference, Quaternion.identity);
 
         // Check if a backflip or front flip was made based on the flip angle threshold
-        if (flipAngle > 180f)
+        if (flipAngle > 150f)
         {
             // Backflip detected
             Debug.Log("Backflip");
             return -1;
         }
-        else if (flipAngle < -180f)
+        else if (flipAngle < -150f)
         {
             // Front flip detected
             Debug.Log("Front Flip");

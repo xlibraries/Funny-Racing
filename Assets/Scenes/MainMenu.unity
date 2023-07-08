@@ -410,7 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCurrencyPer100Meters: 10
-  comboStuntCurrency: 50
+  backflipCurrency: 50
+  frontflipCurrency: 50
   hiddenCollectibleCurrency: 100
 --- !u!4 &116965407
 Transform:
@@ -2389,7 +2390,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582267997}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab2075f23a7ffe24ea6ee40ed487939d, type: 3}
   m_Name: 
@@ -2406,7 +2407,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582267997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69706d1ea322ccd4cbc0d11e483202cd, type: 3}
+  m_Script: {fileID: 11500000, guid: ebc7fa4e3584d74429b1226e988e44bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1637453077

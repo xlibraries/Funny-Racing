@@ -49,13 +49,15 @@ public class CurrencyManager : MonoBehaviour
     // Function to add currency for successful combo stunts
     public void AddComboStuntCurrency()
     {
+        Debug.Log("BACKFLIP" + totalCurrency);
         if (carController.CheckFlip() == 1)
         {
-            totalCurrency += frontflipCurrency;
+            Debug.Log("BACKFLIP" + totalCurrency);
+            totalCurrency += backflipCurrency;
         }
         else if (carController.CheckFlip() == -1)
         {
-            totalCurrency += backflipCurrency;
+            totalCurrency += frontflipCurrency;
         }
         SaveTotalAmount();
     }
