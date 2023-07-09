@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
       distance = fuel present * milage;
     */
     public Transform startpoint;
-    public static bool isGrounded;
     public GameObject carPrefab;
 
     //Parameters for fuel management system
@@ -31,12 +30,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Destroy the previously instantiated car if it exists
+        if (instantiatedCar != null)
+        {
+            Destroy(instantiatedCar);
+        }
         instantiatedCar = Instantiate(carPrefab);
         instantiatedCar.name = "Car";
         CarController carController = instantiatedCar.GetComponent<CarController>();
         carController.SetGameManager(this);
         fuelPresent = fuelCapacity;
-        isGrounded = false;
         //Debug.Log("Fuel present on start: " + fuelPresent);
         startX = startpoint.position.x;
         startY = startpoint.position.y;
@@ -64,20 +67,20 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Fuel Present: " + fuelPresent);
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Ground"))
-        {
-            isGrounded = true;
-            CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
-            Debug.Log("Currency: " + CurrencyManager.Instance.GetTotalCurrency());
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+    //public void OnTriggerEnter2D(Collider2D collider)
+    //{
+    //    if (collider.CompareTag("Ground"))
+    //    {
+    //        isGrounded = true;
+    //        CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
+    //        Debug.Log("Currency: " + CurrencyManager.Instance.GetTotalCurrency());
+    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //    }
 
-        if (collider.CompareTag("Fuel"))
-        {
-            fuelPresent = fuelCapacity;
-            Debug.Log("Fuel Refilled " + fuelPresent);
-        }
-    }
+    //    if (collider.CompareTag("Fuel"))
+    //    {
+    //        fuelPresent = fuelCapacity;
+    //        Debug.Log("Fuel Refilled " + fuelPresent);
+    //    }
+    //}
 }

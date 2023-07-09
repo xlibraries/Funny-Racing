@@ -410,6 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseCurrencyPer100Meters: 10
+  backflipCurrency: 50
+  frontflipCurrency: 50
   comboStuntCurrency: 50
   hiddenCollectibleCurrency: 100
 --- !u!4 &116965407
@@ -1996,7 +1998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80.416626, y: 1359.5833}
+  m_AnchoredPosition: {x: 80.416504, y: 1359.5833}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1357391650
@@ -2329,60 +2331,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582267997}
   m_CullTransparentMesh: 1
---- !u!114 &1582268002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582267997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c7e12930e46794aa0e6631eaada38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
-  frontWheelDampingRatio: 0
-  frontWheeelFrequency: 0
-  dampingDelta: 0.1
-  frequencyDelta: 400
---- !u!114 &1582268003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582267997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9bcd151373053245b50e4be9a7d9116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
-  frontWheelTorque: 0
-  frontWheeelPower: 0
-  torqueDelta: 7
-  powerDelta: 1.5
---- !u!114 &1582268004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582267997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0f70c98e58d1246a83a51dbd7b3c97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentPrefab: {fileID: 6057040769937345960, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
-  frontTyreName: Wheel_Front
-  backTyreName: Wheel_Back
-  linearDragDelta: 0.1
-  angularDragDelta: 0.01
-  frontLinearDrag: 0
-  frontAngularDrag: 0
---- !u!114 &1582268005
+--- !u!114 &1582268006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2391,24 +2340,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582267997}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2075f23a7ffe24ea6ee40ed487939d, type: 3}
+  m_Script: {fileID: 11500000, guid: ebc7fa4e3584d74429b1226e988e44bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
   veichelMass: 0
   veichelMassDelta: 0.1
---- !u!114 &1582268006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582267997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69706d1ea322ccd4cbc0d11e483202cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1637453077
 GameObject:
   m_ObjectHideFlags: 0

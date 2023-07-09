@@ -10,7 +10,7 @@ public class Goal : ScoreManager
 
     private void Update()
     {
-        if ((GameManager.fuelPresent <= 0) || GameManager.isGrounded)
+        if ((GameManager.fuelPresent <= 0) || CarController.isGrounded)
         {
             SubmitScore();
         }
