@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 51805797}
   - component: {fileID: 51805796}
   - component: {fileID: 51805795}
-  - component: {fileID: 51805798}
   m_Layer: 5
   m_Name: ChakraCharge
   m_TagString: Untagged
@@ -258,21 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51805793}
   m_CullTransparentMesh: 1
---- !u!114 &51805798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51805793}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2075f23a7ffe24ea6ee40ed487939d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  carController: {fileID: 6057040769937345937, guid: 4c7c01f14adf52c47a25dfea13d4aa32, type: 3}
-  veichelMass: 0
-  veichelMassDelta: 0.1
 --- !u!1 &178360814
 GameObject:
   m_ObjectHideFlags: 0
