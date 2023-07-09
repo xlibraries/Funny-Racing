@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Destroy the previously instantiated car if it exists
+        if (instantiatedCar != null)
+        {
+            Destroy(instantiatedCar);
+        }
         instantiatedCar = Instantiate(carPrefab);
         instantiatedCar.name = "Car";
         CarController carController = instantiatedCar.GetComponent<CarController>();

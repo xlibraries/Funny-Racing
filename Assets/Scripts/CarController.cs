@@ -163,11 +163,11 @@ public class CarController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject == backWheel.GetComponent<WheelCollider>().gameObject)
+        if (collider.gameObject == backWheel.GetComponentInChildren<CircleCollider2D>().gameObject)
         {
             isBackWheelTouchingGround = false;
         }
-        else if (collider.gameObject == frontWheel.GetComponent<WheelCollider>().gameObject)
+        if (collider.gameObject == frontWheel.GetComponentInChildren<CircleCollider2D>().gameObject)
         {
             isFrontWheelTouchingGround = false;
         }
