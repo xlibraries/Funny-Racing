@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public AudioSource carAudioSource;
+    public AudioClip gameplayAudio;
+    public AudioClip mainMenuAudio;
     public float minSpeed = 0f;
     public float maxSpeed = 10f;
     public float minVolume = 0.2f;
@@ -31,6 +34,39 @@ public class AudioManager : MonoBehaviour
     {
         // Get the Rigidbody2D component of the car
         carRigidbody = GetComponent<Rigidbody2D>();
+
+        // Register a callback for scene changes
+        SceneManager.activeSceneChanged += OnSceneChanged;
+
+        // Play the appropriate audio based on the initial scene
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Scene1")
+        {
+            PlayAudio(gameplayAudio);
+        }
+        else if (currentScene.name == "MainMenu")
+        {
+            PlayAudio(mainMenuAudio);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Unregister the callback when the AudioManager is destroyed
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene previousScene, Scene newScene)
+    {
+        // Play the appropriate audio based on the new scene
+        if (newScene.name == "Gameplay")
+        {
+            PlayAudio(gameplayAudio);
+        }
+        else if (newScene.name == "MainMenu")
+        {
+            PlayAudio(mainMenuAudio);
+        }
     }
 
     private void Update()
@@ -65,5 +101,11 @@ public class AudioManager : MonoBehaviour
     public void SetCarMoving(bool moving)
     {
         isCarMoving = moving;
+    }
+
+    private void PlayAudio(AudioClip audioClip)
+    {
+        carAudioSource.clip = audioClip;
+        carAudioSource.Play();
     }
 }
