@@ -1,69 +1,78 @@
+using UnityEngine.Audio;
+using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource carAudioSource;
-    public float minSpeed = 0f;
-    public float maxSpeed = 10f;
-    public float minVolume = 0.2f;
-    public float maxVolume = 1f;
+    public Sounds[] sounds;
 
-    private bool isCarMoving = false;
-    private Rigidbody2D carRigidbody;
+    private static AudioManager instance;
 
-    public static AudioManager Instance { get; private set; }
+    public static AudioManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<AudioManager>();
+            }
+            return instance;
+        }
+    }
 
     private void Awake()
     {
-        // Set the Instance reference when the script is initialized
-        if (Instance == null)
+        if (instance != null && instance != this)
         {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject); // Destroy duplicate instances
+            Destroy(gameObject);
             return;
+        }
+
+        instance = this;
+
+        foreach (Sounds sound in sounds)
+        {
+            sound.source = gameObject.AddComponent<AudioSource>();
+            sound.source.clip = sound.clip;
+            sound.source.volume = sound.volume;
+            sound.source.pitch = sound.pitch;
+            sound.source.loop = sound.loop;
         }
     }
 
     private void Start()
     {
-        // Get the Rigidbody2D component of the car
-        carRigidbody = GetComponent<Rigidbody2D>();
+        PlaySound("Background Music");
     }
 
-    private void Update()
+    public void PlaySound(string name)
     {
-        // Check if the car is moving
-        if (isCarMoving)
+        Sounds sound = GetSound(name);
+        if (sound != null)
         {
-            // Calculate the current speed of the car
-            float currentSpeed = carRigidbody.velocity.magnitude;
-
-            // Map the speed to a volume range
-            float normalizedSpeed = Mathf.InverseLerp(minSpeed, maxSpeed, currentSpeed);
-            float targetVolume = Mathf.Lerp(minVolume, maxVolume, normalizedSpeed);
-
-            // Set the volume of the audio source
-            carAudioSource.volume = targetVolume;
-
-            // Check if the audio source is not already playing
-            if (!carAudioSource.isPlaying)
-            {
-                // Start playing the audio source
-                carAudioSource.Play();
-            }
+            sound.source.Play();
         }
         else
         {
-            // Stop playing the audio source
-            carAudioSource.Stop();
+            Debug.LogWarning("Sound with name " + name + " not found!");
         }
     }
 
-    public void SetCarMoving(bool moving)
+    public void StopSound(string name)
     {
-        isCarMoving = moving;
+        Sounds sound = GetSound(name);
+        if (sound != null)
+        {
+            sound.source.Stop();
+        }
+        else
+        {
+            Debug.LogWarning("Sound with name " + name + " not found!");
+        }
+    }
+
+    private Sounds GetSound(string name)
+    {
+        return System.Array.Find(sounds, sound => sound.name == name);
     }
 }

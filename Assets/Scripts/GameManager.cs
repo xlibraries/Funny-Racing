@@ -57,8 +57,6 @@ public class GameManager : MonoBehaviour
             Mathf.Pow(distY - startY, 2) +
             Mathf.Pow(distZ - startZ, 2)
             );
-        //CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
-        //Debug.Log("Distance Covered: " + distanceCovered);
     }
 
     public void FuelManagement()
@@ -66,21 +64,4 @@ public class GameManager : MonoBehaviour
         fuelPresent -= BurnRate * Time.deltaTime;
         //Debug.Log("Fuel Present: " + fuelPresent);
     }
-
-    //public void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if (collider.CompareTag("Ground"))
-    //    {
-    //        isGrounded = true;
-    //        CurrencyManager.Instance.AddBaseCurrency(distanceCovered); //will add base currency as per every 100m distance covered rule
-    //        Debug.Log("Currency: " + CurrencyManager.Instance.GetTotalCurrency());
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    }
-
-    //    if (collider.CompareTag("Fuel"))
-    //    {
-    //        fuelPresent = fuelCapacity;
-    //        Debug.Log("Fuel Refilled " + fuelPresent);
-    //    }
-    //}
 }
