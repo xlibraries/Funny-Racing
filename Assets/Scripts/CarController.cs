@@ -30,6 +30,8 @@ public class CarController : MonoBehaviour
     private bool isBackWheelTouchingGround = false;
     private bool isFrontWheelTouchingGround = false;
     private const float MaxRotation = 10f;
+    private bool previousInputState = false;
+    private bool isAudioPlaying = false;
 
     private void Start()
     {
@@ -60,7 +62,9 @@ public class CarController : MonoBehaviour
 
     private void HandleInput()
     {
-        if (Input.touchCount > 0)
+        bool currentInputState = Input.touchCount > 0;
+
+        if (currentInputState)
         {
             Touch touch = Input.GetTouch(0);
             rotationInputThreshold = 0.8f;
@@ -69,19 +73,16 @@ public class CarController : MonoBehaviour
             {
                 movement = speed; // Move backward
                 rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
-                AudioManager.Instance.SetCarMoving(true);
             }
             else if (touch.position.x > Screen.width * 0.75f)
             {
                 movement = -speed; // Move forward
                 rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
-                AudioManager.Instance.SetCarMoving(true);
             }
             else
             {
                 movement = 0f; // No movement
                 rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
-                AudioManager.Instance.SetCarMoving(false);
             }
         }
         else
@@ -89,12 +90,35 @@ public class CarController : MonoBehaviour
             rotationInputThreshold = 0.5f;
             rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
             movement = 0f; // No movement
-            AudioManager.Instance.SetCarMoving(false);
         }
+
         clampedRotation = Mathf.Clamp(rotationInput, -MaxRotation, MaxRotation);
         targetRotation = clampedRotation * rotationSpeed;
         rotation = Mathf.SmoothDamp(rotation, targetRotation, ref currentRotationVelocity, 1f / rotationDampening);
+
+        // Check if input state has changed since the last frame
+        if (currentInputState != previousInputState)
+        {
+            if (currentInputState)
+            {
+                AudioManager.Instance.PlaySound("WheelMovement");
+                isAudioPlaying = true;
+            }
+            else if (isAudioPlaying && movement == 0f)
+            {
+                AudioManager.Instance.StopSound("WheelMovement");
+                isAudioPlaying = false;
+            }
+            else if (!currentInputState && isAudioPlaying && movement != 0f)
+            {
+                AudioManager.Instance.PlaySound("WheelMovement");
+            }
+        }
+
+        previousInputState = currentInputState;
     }
+
+
 
     private void FixedUpdate()
     {
