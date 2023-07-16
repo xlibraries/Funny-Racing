@@ -33,6 +33,7 @@ public class CarController : MonoBehaviour
     private bool previousInputState = false;
     private bool isAudioPlaying = false;
 
+
     private void Start()
     {
         if (SystemInfo.supportsGyroscope)
@@ -71,11 +72,13 @@ public class CarController : MonoBehaviour
 
             if (touch.position.x < Screen.width * 0.25f)
             {
+                HapticsManager.Instance.HapticsFeedback(touch);
                 movement = speed; // Move backward
                 rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
             }
             else if (touch.position.x > Screen.width * 0.75f)
             {
+                HapticsManager.Instance.HapticsFeedback(touch);
                 movement = -speed; // Move forward
                 rotationInput = Input.gyro.rotationRate.y * rotationInputThreshold;
             }
