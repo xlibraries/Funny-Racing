@@ -13,7 +13,7 @@ public class SuspensionManager : MonoBehaviour
 
     [HideInInspector]
     public int frontWheeelFrequency;
-    private int initialFrontWheelfrequency = 4;
+    private int initialFrontWheelfrequency = 400;
 
     public float dampingDelta = 0.1f;
     public int frequencyDelta = 400;

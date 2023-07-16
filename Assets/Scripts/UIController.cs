@@ -27,7 +27,7 @@ public class UIController : MonoBehaviour
         prefabUpgrades.text = "Suspension: Damping Ratio: " + wheelJoint.suspension.dampingRatio + " Frequency: " + wheelJoint.suspension.frequency + "\n" +
                               "Engine: Torque: " + motor.maxMotorTorque + " Speed: " + currentMotorSpeed + "\n" +
                               "Chassis: Mass: " + rb2D.mass + "\n" +
-                              "Currency: " + CurrencyManager.Instance.GetTotalCurrency();
+                              "Currency: " + CurrencyManager.Instance.GetTotalCurrency().ToString();
 
         //Debug.LogWarning(prefabUpgrades.text);
     }
