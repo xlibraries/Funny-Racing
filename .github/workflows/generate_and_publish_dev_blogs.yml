@@ -80,3 +80,4 @@ jobs:
 
       - name: Display files in the publish directory
         run: ls -l /var/www/html/blog-posts
+
