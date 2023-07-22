@@ -78,8 +78,8 @@ jobs:
             echo "Failed to find the HTML file in the artifact."
           fi
 
-        - name: List files in the destination directory
-          run: ls -l /var/www/html/blog-posts
-  
-        - name: Display content of blog_post.html
-          run: cat /var/www/html/blog-posts/blog_post.html
+      - name: List files in the destination directory
+        run: ls -l /var/www/html/blog-posts
+
+      - name: Display content of blog_post.html
+        run: cat /var/www/html/blog-posts/blog_post.html
