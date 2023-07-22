@@ -29,4 +29,4 @@ jobs:
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          cp blog_post.html /var/www/html
+          cp blog_post.html /var/www/html/blog-posts
