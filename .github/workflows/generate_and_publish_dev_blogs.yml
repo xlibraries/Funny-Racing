@@ -10,18 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Verify blog_post.md exists
+        run: |
+          if [ ! -f "blog_post.md" ]; then
+            echo "Error: blog_post.md not found in the repository."
+            exit 1
+          else
+            echo "blog_post.md exists."
+          fi
+
       - name: Install pandoc if not available
         run: |
           if ! command -v pandoc &> /dev/null; then
             sudo apt-get update
             sudo apt-get install -y pandoc
-          fi
-
-      - name: Ensure blog_post.md exists
-        run: |
-          if [ ! -f "blog_post.md" ]; then
-            touch blog_post.md
-            echo "Created blog_post.md file."
           fi
 
       - name: Generate blog post
@@ -32,8 +35,7 @@ jobs:
             echo "HTML file generated successfully."
           else
             echo "Failed to generate the HTML file."
-            touch blog_post.html
-            echo "Created an empty blog_post.html file."
+            exit 1
           fi
           ls -l
 
@@ -48,6 +50,16 @@ jobs:
     needs: generate-blog-post
     steps:
       - uses: actions/checkout@v3
+
+      - name: Verify blog_post.html exists in artifact
+        run: |
+          if [ ! -f "blog_post_artifact/blog_post.html" ]; then
+            echo "Error: blog_post.html not found in the artifact."
+            exit 1
+          else
+            echo "blog_post.html exists in the artifact."
+          fi
+
       - name: Create blog-posts directory if not available
         run: |
           if [ ! -d "/var/www/html/blog-posts" ]; then
@@ -71,15 +83,8 @@ jobs:
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          if [ -f "blog_post_artifact/blog_post.html" ]; then
-            cp blog_post_artifact/blog_post.html /var/www/html/blog-posts
-            echo "Blog post published successfully."
-          else
-            echo "Failed to find the HTML file in the artifact."
-          fi
+          cp blog_post_artifact/blog_post.html /var/www/html/blog-posts
+          echo "Blog post published successfully."
 
       - name: List files in the destination directory
         run: ls -l /var/www/html/blog-posts
-
-      - name: Display content of blog_post.html
-        run: cat /var/www/html/blog-posts/blog_post.html
