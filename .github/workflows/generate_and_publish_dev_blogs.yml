@@ -22,7 +22,7 @@ jobs:
           else :
             touch blog_post.md
             echo "Created blog post file."
-          pandoc -s -f markdown -t html blog_post.md -o blog_post.html
+            pandoc -s -f markdown -t html blog_post.md -o blog_post.html
 
       - name: Upload blog post
         uses: actions/upload-artifact@v1
