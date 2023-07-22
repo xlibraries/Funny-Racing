@@ -22,18 +22,13 @@ jobs:
           if [ ! -f "blog_post.md" ]; then
             # Define the blog_post.md template
             cat << 'EOF' > blog_post.md
-# My Blog Post
-
-This is a sample blog post created using GitHub Actions and Pandoc.
-
-## Section 1
-
-This is the first section of the blog post.
-
-## Section 2
-
-This is the second section of the blog post.
-EOF
+            # My Blog Post
+            This is a sample blog post created using GitHub Actions and Pandoc.
+            ## Section 1
+            This is the first section of the blog post.
+            ## Section 2
+            This is the second section of the blog post.
+            EOF
             echo "Created blog_post.md file from template."
           fi
 
