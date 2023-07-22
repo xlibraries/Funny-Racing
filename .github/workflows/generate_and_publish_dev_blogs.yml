@@ -24,6 +24,14 @@ jobs:
             echo "Created blog post file."
           fi
           pandoc -s -f markdown -t html blog_post.md -o blog_post.html
+          if [ -f "blog_post.html" ]; then
+            echo "HTML file generated successfully."
+          else
+            echo "Failed to generate the HTML file."
+          fi
+
+      - name: Display files in the current directory
+        run: ls -l
 
       - name: Upload blog post
         uses: actions/upload-artifact@v2
@@ -36,6 +44,8 @@ jobs:
     needs: generate-blog-post
     steps:
       - uses: actions/checkout@v3
+      - name: Display files in the current directory
+        run: ls -l
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
