@@ -115,8 +115,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 0.12566371
-  m_LinearDrag: 1.1000001
-  m_AngularDrag: 0.09999999
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.01
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 1602afea266fb7247a8d7d94ae639743, type: 2}
   m_Interpolate: 0
@@ -305,13 +305,13 @@ WheelJoint2D:
   m_Anchor: {x: -0.364, y: -0.42000008}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
-    m_DampingRatio: 0.3
-    m_Frequency: 804
+    m_DampingRatio: 0.1
+    m_Frequency: 400
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 2531
+    m_MaximumMotorForce: 500
 --- !u!235 &6057040769937345939
 WheelJoint2D:
   m_ObjectHideFlags: 0
@@ -329,13 +329,13 @@ WheelJoint2D:
   m_Anchor: {x: 0.363, y: -0.42000008}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
-    m_DampingRatio: 0.3
-    m_Frequency: 804
+    m_DampingRatio: 0.1
+    m_Frequency: 400
     m_Angle: 90
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 2531
+    m_MaximumMotorForce: 500
 --- !u!114 &6057040769937345937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,11 +348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71f42e211267d6468c8143a805d2c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startpoint: {fileID: 0}
   suspensionManager: {fileID: 0}
   engineManager: {fileID: 0}
-  speed: 829.4401
+  speed: 400
   rotationSpeed: 400
+  rotationDampening: 10
   backWheel: {fileID: 6057040769937345938}
   frontWheel: {fileID: 6057040769937345939}
   rb: {fileID: 6057040769937345966}
@@ -471,8 +471,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
   m_Mass: 0.12566371
-  m_LinearDrag: 1.1000001
-  m_AngularDrag: 0.09999999
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.01
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 1602afea266fb7247a8d7d94ae639743, type: 2}
   m_Interpolate: 0

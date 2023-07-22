@@ -13,7 +13,7 @@ public class SuspensionManager : MonoBehaviour
 
     [HideInInspector]
     public int frontWheeelFrequency;
-    private int initialFrontWheelfrequency = 4;
+    private int initialFrontWheelfrequency = 400;
 
     public float dampingDelta = 0.1f;
     public int frequencyDelta = 400;
@@ -104,8 +104,8 @@ public class SuspensionManager : MonoBehaviour
             carController.frontWheel.suspension = frontSuspension;
             carController.backWheel.suspension = frontSuspension;
 
-            Debug.Log("dampingRatio: " + frontWheelDampingRatio);
-            Debug.Log("Frequency: " + frontWheeelFrequency);
+            //Debug.Log("dampingRatio: " + frontWheelDampingRatio);
+            //Debug.Log("Frequency: " + frontWheeelFrequency);
         }
         else
         {
