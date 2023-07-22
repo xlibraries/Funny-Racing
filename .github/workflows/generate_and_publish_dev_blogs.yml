@@ -20,8 +20,8 @@ jobs:
       - name: Ensure blog_post.md exists
         run: |
           if [ ! -f "blog_post.md" ]; then
-            # Define the blog_post.md template
-            cat << 'EOF' > blog_post.md
+            # Define the blog_post.md template without single quotes around 'EOF'
+            cat << EOF > blog_post.md
             # My Blog Post
             This is a sample blog post created using GitHub Actions and Pandoc.
             ## Section 1
