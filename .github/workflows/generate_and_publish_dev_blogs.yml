@@ -1,34 +1,32 @@
-name: Generate and publish dev blogs
+name: Generate blog post
 
 on:
   push:
     branches:
-      - gh-pages
+      - main
 
 jobs:
   generate-blog-post:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          pip install markdown
-
+      - uses: actions/checkout@v3
       - name: Generate blog post
         run: |
           echo "Generating blog post..."
-          python generate_blog_post.py
+          pandoc -s -f markdown -t html blog_post.md -o blog_post.html
 
+      - name: Upload blog post
+        uses: actions/upload-artifact@v1
+        with:
+          name: blog_post
+          path: blog_post.html
+
+  publish-blog-post:
+    runs-on: ubuntu-latest
+    needs: generate-blog-post
+    steps:
+      - uses: actions/checkout@v3
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          # Your code to publish the blog post to GitHub Pages goes here.
-
-  update-editorial-calendar:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Update editorial calendar
-        run: |
-          echo "Updating editorial calendar..."
-          # Update your blog's editorial calendar to reflect the new blog post.
+          cp blog_post.html /var/www/html
