@@ -20,3 +20,4 @@ def generate_blog_post():
 
 if __name__ == "__main__":
   generate_blog_post()
+
