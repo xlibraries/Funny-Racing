@@ -17,9 +17,10 @@ jobs:
       - name: Generate blog post
         run: |
           echo "Generating blog post..."
+          if not fileExists "blog_post.md" :
+            touch blog_post.md
+            echo "Created blog post file."
           pandoc -s -f markdown -t html blog_post.md -o blog_post.html
-          with:
-            workingDirectory: .
 
       - name: Upload blog post
         uses: actions/upload-artifact@v1
