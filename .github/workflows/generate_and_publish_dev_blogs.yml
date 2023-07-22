@@ -17,15 +17,16 @@ jobs:
       - name: Generate blog post
         run: |
           echo "Generating blog post..."
-          if fileExists "blog_post.md" :
+          if [ -f "blog_post.md" ]; then
             echo "Blog post already exists."
-          else :
+          else
             touch blog_post.md
             echo "Created blog post file."
-            pandoc -s -f markdown -t html blog_post.md -o blog_post.html
+          fi
+          pandoc -s -f markdown -t html blog_post.md -o blog_post.html
 
       - name: Upload blog post
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: blog_post
           path: blog_post.html
