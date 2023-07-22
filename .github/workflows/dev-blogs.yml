@@ -3,7 +3,7 @@ name: Generate and publish dev blogs
 on:
   push:
     branches:
-      - main
+      - gh-pages
 
 jobs:
   generate-blog-post:
