@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install pandoc
+        run: |
+          apt-get install pandoc
+
       - name: Generate blog post
         run: |
           echo "Generating blog post..."
