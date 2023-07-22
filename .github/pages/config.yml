@@ -1,0 +1,6 @@
+name: my-blog
+
+source:
+    directory: blog
+
+url: https://xlibraries.github.io/Funny-Racing/
