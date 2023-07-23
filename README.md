@@ -4,3 +4,13 @@ The game I am creating is an immersive journey through the evolution of vehicles
 The main motivation for players is to experience the unique gameplay and challenges associated with each vehicle type and era, while also learning about the history and cultural significance of transportation. The game consists of eight levels, each representing a distinct time period and location.
 
 Each level provides a detailed and immersive environment, capturing the terrain, landmarks, and historical buildings of the specific era and location. The game offers a captivating mix of entertainment and education, appealing to players with an interest in transportation and history. *
+---
+title: My First Blog Post
+date: 2023-07-23
+---
+
+This is my first blog post!
+
+I'm excited to start blogging and sharing my thoughts on technology.
+
+I hope you enjoy reading my blog posts!

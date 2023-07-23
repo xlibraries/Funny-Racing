@@ -17,17 +17,17 @@ jobs:
             sudo apt-get install -y pandoc
           fi
 
-      - name: Ensure blog_post.md exists
+      - name: Ensure README.md exists
         run: |
-          if [ ! -f "blog_post.md" ]; then
-            touch blog_post.md
-            echo "Created blog_post.md file."
+          if [ ! -f "README.md" ]; then
+            touch README.md
+            echo "Created README.md file."
           fi
 
       - name: Generate blog post
         run: |
           echo "Generating blog post..."
-          pandoc -s -f markdown -t html blog_post.md -o blog_post.html
+          pandoc -s -f markdown -t html README.md -o blog_post.html
           if [ -f "blog_post.html" ]; then
             echo "HTML file generated successfully."
           else
