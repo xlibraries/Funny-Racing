@@ -1,30 +1,51 @@
-import git
+import os
+from git import Repo
 import markdown2
 
-# Initialize the Git repository
-repo = git.Repo()
+# Function to get the commit messages and generate HTML blog post content
+def generate_blog_post(repo_path):
+    repo = Repo(repo_path)
+    commits = repo.iter_commits()
+    
+    blog_content = ""
+    
+    for commit in commits:
+        commit_sha = commit.hexsha
+        commit_message = commit.message.strip()
+        commit_html = f"<h2>Commit {commit_sha}</h2><p>{commit_message}</p>"
+        
+        blog_content += commit_html
+    
+    return blog_content
 
-# Get the list of commits
-commits = list(repo.iter_commits('main'))
+# Main function
+def main():
+    repo_path = os.getcwd()  # Assuming the script is in the root directory of the repository
 
-# Initialize the Markdown converter
-markdowner = markdown2.Markdown()
+    # Generate blog post content from commit messages
+    blog_content = generate_blog_post(repo_path)
 
-# Loop through each commit
-for commit in commits:
-    # Extract commit message
-    commit_message = commit.message
+    # Convert the blog post content to HTML
+    blog_html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Blog</title>
+    </head>
+    <body>
+        <h1>My Blog</h1>
 
-    # Get the code diff for the commit
-    code_diff = commit.diff(commit.parents[0]).__str__()
+        <!-- Blog post content -->
+        {blog_content}
+        <!-- End of blog post content -->
+    </body>
+    </html>
+    """
 
-    # Convert the code diff to HTML
-    pandoc_html = markdowner.convert(code_diff)
+    # Save the HTML content to index.html file
+    with open("index.html", "w", encoding="utf-8") as file:
+        file.write(blog_html)
 
-    # Add commit message to the beginning of the HTML content
-    commit_html = f"<h2>Commit Message:</h2><p>{commit_message}</p>"
-    pandoc_html_with_commit = commit_html + pandoc_html
-
-    # Write the HTML content with the commit message to blog_post.html
-    with open("blog_post.html", "w") as html_file:
-        html_file.write(pandoc_html_with_commit)
+if __name__ == "__main__":
+    main()
