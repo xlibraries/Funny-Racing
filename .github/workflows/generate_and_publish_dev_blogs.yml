@@ -38,11 +38,12 @@ jobs:
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
+          cp $GITHUB_WORKSPACE/index.html /github/workspace/var/www/html/
           echo "<!-- Blog post content -->" > blog_index.html
-          cat index.html >> blog_index.html
+          cat /github/workspace/var/www/html/index.html >> blog_index.html
           cat /var/www/html/blog-posts/blog_post.html >> blog_index.html
           echo "<!-- End of blog post content -->" >> blog_index.html
-          mv blog_index.html /var/www/html/index.html
+          mv blog_index.html /github/workspace/var/www/html/index.html
           echo "Blog post published successfully."
 
       - name: List files in the destination directory
