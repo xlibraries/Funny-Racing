@@ -37,8 +37,14 @@ jobs:
         
       - name: Publish blog post
         run: |
+          echo "Current directory:"
+          pwd
+      
+          echo "List files and folders in the current directory:"
+          ls -R
+    
           echo "Publishing blog post..."
-          cp index.html /var/www/html/
+          cp $GITHUB_WORKSPACE/index.html /var/www/html/
           echo "<!-- Blog post content -->" >> /var/www/html/index.html
           cat /var/www/html/index.html >> /var/www/html/index.html
           cat /var/www/html/blog-posts/blog_post.html >> /var/www/html/index.html
