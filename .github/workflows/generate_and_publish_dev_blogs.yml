@@ -65,19 +65,19 @@ jobs:
           name: blog_post
           path: blog_post_artifact
 
-      - name: Display files in the downloaded artifact
-        run: ls -l blog_post_artifact
-
       - name: Retrieve commit description
         id: get_commit_description
         run: echo "::set-output name=commit_description::$(git log -1 --pretty=%B)"
+
+      - name: Display commit description
+        run: echo "${{ steps.get_commit_description.outputs.commit_description }}"
 
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
           if [ -f "blog_post_artifact/blog_post.html" ]; then
             # Add commit description to the beginning of the HTML file
-            commit_description=$(cat blog_post_artifact/commit_description.txt)
+            commit_description="${{ steps.get_commit_description.outputs.commit_description }}"
             echo "<h2>Commit Description:</h2><p>$commit_description</p>" > blog_post_with_description.html
             cat blog_post_artifact/blog_post.html >> blog_post_with_description.html
 
