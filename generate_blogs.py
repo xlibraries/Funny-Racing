@@ -1,26 +1,51 @@
-import git
+import os
+from git import Repo
 import markdown2
 
-# Initialize the repository
-repo = git.Repo(".")
+# Function to get the commit messages and generate HTML blog post content
+def generate_blog_post(repo_path):
+    repo = Repo(repo_path)
+    commits = repo.iter_commits()
+    
+    blog_content = ""
+    
+    for commit in commits:
+        commit_sha = commit.hexsha
+        commit_message = commit.message.strip()
+        commit_html = f"<h2>Commit {commit_sha}</h2><p>{commit_message}</p>"
+        
+        blog_content += commit_html
+    
+    return blog_content
 
-# Create the blog content
-blog_content = "# My Blog\n\n"
+# Main function
+def main():
+    repo_path = os.getcwd()  # Assuming the script is in the root directory of the repository
 
-# Loop through all commits and fetch their descriptions
-for commit in repo.iter_commits():
-    commit_description = commit.message.strip()
-    blog_content += f"## Commit {commit.hexsha}\n\n"
-    blog_content += f"{commit_description}\n\n"
+    # Generate blog post content from commit messages
+    blog_content = generate_blog_post(repo_path)
 
-# Convert the blog content to HTML
-html_content = markdown2.markdown(blog_content)
+    # Convert the blog post content to HTML
+    blog_html = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Blog</title>
+    </head>
+    <body>
+        <h1>My Blog</h1>
 
-# Save the HTML content to the blog_post.html file
-with open("blog_post.html", "w", encoding="utf-8") as html_file:
-    html_file.write(html_content)
+        <!-- Blog post content -->
+        {blog_content}
+        <!-- End of blog post content -->
+    </body>
+    </html>
+    """
 
-with open("index.html", "w", encoding="utf-8") as html_file:
-    html_file.write(html_content)
+    # Save the HTML content to index.html file in the root directory of the repository
+    with open("index.html", "w", encoding="utf-8") as file:
+        file.write(blog_html)
 
-print("Blog post generated successfully.")
+if __name__ == "__main__":
+    main()

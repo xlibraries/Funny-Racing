@@ -68,6 +68,74 @@ jobs:
       - name: Update index.html with blog post content
         run: |
           sudo sh -c "echo '<!-- Blog post content -->' >> /var/www/html/index.html"
-          sudo cat /var/www/html/blog-posts/blog_post.html | sudo tee -a /var/www/html/index.html
+          name: Generate and Publish Dev Blogs
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  generate-blog-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Python and required packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip
+          pip3 install gitpython markdown2
+
+      - name: Generate blog post from commits
+        run: |
+          python3 generate_blogs.py
+
+      - name: Upload blog post artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: blog_post
+          path: blog_post.html
+
+  publish-blog-post:
+    runs-on: ubuntu-latest
+    needs: generate-blog-post
+    steps:
+      - name: Install Apache web server
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apache2
+
+      - name: Create blog-posts directory if not available
+        run: |
+          if [ ! -d "/var/www/html/blog-posts" ]; then
+            sudo mkdir -p /var/www/html/blog-posts
+            sudo chown -R $USER:$USER /var/www/html/blog-posts
+            echo "Created /var/www/html/blog-posts directory."
+          fi
+
+      - name: Download blog post artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: blog_post
+          path: blog_post_artifact
+
+      - name: Publish blog post
+        run: |
+          echo "Publishing blog post..."
+          cp blog_post_artifact/blog_post.html /var/www/html/blog-posts
+          echo "Blog post published successfully."
+
+      - name: List files in the destination directory
+        run: ls -l /var/www/html/blog-posts
+
+      - name: Display content of blog_post.html
+        run: cat /var/www/html/blog-posts/blog_post.html
+
+      - name: Update index.html with blog post content
+        run: |
+          cp blog_post_artifact/blog_post.html index.html
+          echo "Updated index.html with blog post content."
+sudo cat /var/www/html/blog-posts/blog_post.html | sudo tee -a /var/www/html/index.html
           sudo sh -c "echo '<!-- End of blog post content -->' >> /var/www/html/index.html"
           echo "Updated index.html with blog post content."
