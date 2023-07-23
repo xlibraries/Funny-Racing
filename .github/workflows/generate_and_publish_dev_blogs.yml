@@ -1,4 +1,4 @@
-name: Generate blog post
+name: Generate and Publish Dev Blogs
 
 on:
   push:
@@ -18,20 +18,29 @@ jobs:
             sudo apt-get install -y pandoc
           fi
 
-      - name: Generate blog post from commits
-        run: |
-          python3 generate_blogs.py
-          echo "Generated blog post from commits."
+      - name: Install gitpython
+        run: pip install gitpython
 
-      - name: Display content of index.html
-        run: cat index.html
+      - name: Ensure blog_post.md exists
+        run: |
+          if [ ! -f "blog_post.md" ]; then
+            touch blog_post.md
+            echo "Created blog_post.md file."
+          fi
+
+      - name: Generate blog post
+        run: python3 generate_blogs.py
+
+      - name: Upload blog post
+        uses: actions/upload-artifact@v2
+        with:
+          name: blog_post
+          path: blog_post.html
 
   publish-blog-post:
     runs-on: ubuntu-latest
     needs: generate-blog-post
     steps:
-      - uses: actions/checkout@v3
-
       - name: Create blog-posts directory if not available
         run: |
           if [ ! -d "/var/www/html/blog-posts" ]; then
@@ -40,12 +49,38 @@ jobs:
             echo "Created /var/www/html/blog-posts directory."
           fi
 
-      - name: Copy index.html to the destination directory
-        run: cp index.html /var/www/html/blog-posts
-        shell: bash
+      - name: Display files in the current directory
+        run: ls -l
 
-      - name: Display files in the destination directory
+      - name: Download blog post artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: blog_post
+          path: blog_post_artifact
+
+      - name: Publish blog post
+        run: |
+          echo "Publishing blog post..."
+          if [ -f "blog_post_artifact/blog_post.html" ]; then
+            cp blog_post_artifact/blog_post.html /var/www/html/blog-posts
+            echo "Blog post published successfully."
+          else
+            echo "Failed to find the HTML file in the artifact."
+          fi
+
+      - name: List files in the destination directory
         run: ls -l /var/www/html/blog-posts
 
-      - name: Display content of index.html on the website
+      - name: Display content of index.html
         run: cat /var/www/html/blog-posts/index.html
+
+      - name: Update index.html with blog post content
+        run: |
+          if [ -f "index.html" ]; then
+            echo "<!-- Blog post content -->" >> /var/www/html/blog-posts/index.html
+            cat /var/www/html/blog-posts/blog_post.html >> /var/www/html/blog-posts/index.html
+            echo "<!-- End of blog post content -->" >> /var/www/html/blog-posts/index.html
+            echo "Updated index.html with blog post content."
+          else
+            echo "index.html not found in the repository. Please create the file to display the blog content."
+          fi
