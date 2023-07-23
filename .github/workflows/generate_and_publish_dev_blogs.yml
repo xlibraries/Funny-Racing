@@ -46,7 +46,6 @@ jobs:
           ls -R
       
           echo "Publishing blog post..."
-          cp index.html
           echo "<!-- Blog post content -->" >> index.html
           cat index.html >> index.html
           cat /var/www/html/blog-posts/blog_post.html >> index.html
