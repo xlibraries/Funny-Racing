@@ -63,7 +63,15 @@ jobs:
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          commit_descriptions="${{ steps.get_commit_descriptions.outputs.commit_descriptions }}"
-          echo "<h1>Blog Posts</h1>" > /var/www/html/blog-posts/index.html
-          echo "$commit_descriptions" >> /var/www/html/blog-posts/index.html
-          echo "Blog post published successfully."
+          if [ -f "blog_post_artifact/blog_post.html" ]; then
+            # Add commit description to the beginning of the HTML file
+            commit_descriptions="${{ steps.get_commit_descriptions.outputs.commit_descriptions }}"
+            echo "<h1>Blog Posts</h1>" > /var/www/html/blog-posts/index.html
+            echo "$commit_descriptions" >> /var/www/html/blog-posts/index.html
+            cat blog_post_artifact/blog_post.html >> blog_post_with_description.html
+            # Copy the combined HTML file to the destination directory
+            cp blog_post_with_description.html /var/www/html/blog-posts
+            echo "Blog post published successfully."
+          else
+            echo "Failed to find the HTML file in the artifact."
+          fi
