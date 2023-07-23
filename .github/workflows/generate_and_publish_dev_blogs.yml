@@ -19,12 +19,8 @@ jobs:
 
       - name: Generate blog post from commits
         run: |
-          python3 generate_blog_post.py
-          echo "Generated blog post from commits."
+          python3 generate_blogs.py
 
-      - name: Display content of index.html
-        run: cat index.html
-        
       - name: Upload blog post artifact
         uses: actions/upload-artifact@v2
         with:
