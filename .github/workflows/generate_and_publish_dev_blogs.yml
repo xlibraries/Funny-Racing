@@ -49,17 +49,11 @@ jobs:
         with:
           name: blog_post
           path: blog_post_artifact
-  
-
-      - name: Debug artifact path
-        run: |
-          ls -l
-          ls -l ${{ steps.download_artifact.outputs.download_path }}
 
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          cp ${{ steps.download_artifact.outputs.download_path }}/blog_post.html /var/www/html/blog-posts
+          cp blog_post_artifact/blog_post.html /var/www/html/blog-posts
           echo "Blog post published successfully."
 
       - name: List files in the destination directory
