@@ -46,10 +46,9 @@ jobs:
           ls -R
       
           echo "Publishing blog post..."
-          echo "<!-- Blog post content -->" >> index.html
-          cat index.html >> index.html
-          cat /var/www/html/blog-posts/blog_post.html >> index.html
-          echo "<!-- End of blog post content -->" >> index.html
+          echo "<!-- Blog post content -->" | sudo tee -a index.html
+          cat index.html | sudo tee -a index.html
+          echo "<!-- End of blog post content -->" | sudo tee -a index.html
           echo "Blog post published successfully."
         
         
