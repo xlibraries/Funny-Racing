@@ -32,6 +32,7 @@ jobs:
           
       - name: Print files and folders in the directory
         run: |
+          cd /var/www/html
           ls -R
         
       - name: Publish blog post
