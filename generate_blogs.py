@@ -43,8 +43,8 @@ def main():
     </html>
     """
 
-    # Save the HTML content to index.html file in the root directory of the repository
-    with open("index.html", "w", encoding="utf-8") as file:
+    # Save the HTML content to blogs_auto.html file in the root directory of the repository
+    with open("blogs_auto.html", "w", encoding="utf-8") as file:
         file.write(blog_html)
 
 if __name__ == "__main__":
