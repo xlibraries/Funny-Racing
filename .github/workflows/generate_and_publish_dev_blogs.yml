@@ -30,25 +30,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y apache2
 
-      - name: Create blog-posts directory if not available
-        run: |
-          if [ ! -d "/var/www/html/blog-posts" ]; then
-            sudo mkdir -p /var/www/html/blog-posts
-            sudo chown -R $USER:$USER /var/www/html/blog-posts
-            echo "Created /var/www/html/blog-posts directory."
-          fi
-
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          cp index.html /var/www/html/blog-posts
+          sudo cp index.html /var/www/html/
           echo "Blog post published successfully."
 
       - name: List files in the destination directory
-        run: ls -l /var/www/html/blog-posts
+        run: ls -l /var/www/html/
 
       - name: Display content of index.html
-        run: cat /var/www/html/blog-posts/index.html
+        run: cat /var/www/html/index.html
 
       - name: Display content of blog_post.html (optional - for debugging)
         run: cat index.html
+
