@@ -1,15 +1,16 @@
-name: Generate and Publish Blog Posts
+name: Generate and Publish Blog
 
 on:
   push:
     branches:
-      - gh-pages
+      - gh-pages  # Change this to your desired branch
 
 jobs:
   generate-blog-post:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Install pandoc if not available
         run: |
           if ! command -v pandoc &> /dev/null; then
@@ -17,32 +18,13 @@ jobs:
             sudo apt-get install -y pandoc
           fi
 
-      - name: Ensure README.md exists
-        run: |
-          if [ ! -f "README.md" ]; then
-            touch README.md
-            echo "Created README.md file."
-          fi
+      - name: Install gitpython and markdown2
+        run: pip install gitpython markdown2
 
       - name: Generate blog post from commits
-        run: |
-          pip install gitpython markdown2
-          python generate_blogs.py
+        run: python generate_blogs.py
 
-      - name: Generate blog post
-        run: |
-          echo "Generating blog post..."
-          pandoc -s -f markdown -t html README.md -o blog_post.html
-          if [ -f "blog_post.html" ]; then
-            echo "HTML file generated successfully."
-          else
-            echo "Failed to generate the HTML file."
-            touch blog_post.html
-            echo "Created an empty blog_post.html file."
-          fi
-          ls -l
-
-      - name: Upload blog post
+      - name: Upload blog post artifact
         uses: actions/upload-artifact@v2
         with:
           name: blog_post
@@ -53,6 +35,7 @@ jobs:
     needs: generate-blog-post
     steps:
       - uses: actions/checkout@v3
+
       - name: Create blog-posts directory if not available
         run: |
           if [ ! -d "/var/www/html/blog-posts" ]; then
@@ -61,40 +44,26 @@ jobs:
             echo "Created /var/www/html/blog-posts directory."
           fi
 
-      - name: Display files in the current directory
-        run: ls -l
-
       - name: Download blog post artifact
         uses: actions/download-artifact@v2
         with:
           name: blog_post
           path: blog_post_artifact
 
-      - name: Retrieve commit description
-        id: get_commit_description
-        run: echo "::set-output name=commit_description::$(git log -1 --pretty=%B)"
+      - name: Retrieve commit descriptions
+        id: get_commit_descriptions
+        run: |
+          commit_descriptions=$(git log --pretty=%B)
+          echo "::set-output name=commit_descriptions::$commit_descriptions"
 
-      - name: Display commit description
-        run: echo "${{ steps.get_commit_description.outputs.commit_description }}"
+      - name: Generate blog index.html
+        run: |
+          cp index.html /var/www/html/blog-posts
 
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          if [ -f "blog_post_artifact/blog_post.html" ]; then
-            # Add commit description to the beginning of the HTML file
-            commit_description="${{ steps.get_commit_description.outputs.commit_description }}"
-            echo "<h2>Commit Description:</h2><p>$commit_description</p>" > blog_post_with_description.html
-            cat blog_post_artifact/blog_post.html >> blog_post_with_description.html
-
-            # Copy the combined HTML file to the destination directory
-            cp blog_post_with_description.html /var/www/html/blog-posts
-            echo "Blog post published successfully."
-          else
-            echo "Failed to find the HTML file in the artifact."
-          fi
-
-      - name: List files in the destination directory
-        run: ls -l /var/www/html/blog-posts
-
-      - name: Display content of blog_post.html
-        run: cat /var/www/html/blog-posts/blog_post_with_description.html
+          commit_descriptions="${{ steps.get_commit_descriptions.outputs.commit_descriptions }}"
+          echo "<h1>Blog Posts</h1>" > /var/www/html/blog-posts/index.html
+          echo "$commit_descriptions" >> /var/www/html/blog-posts/index.html
+          echo "Blog post published successfully."
