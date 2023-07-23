@@ -27,9 +27,14 @@ jobs:
           name: blog_post
           path: blog_post.html
 
+      - name: Create index.html
+        run: |
+          echo "<h1>My Blog</h1>" > index.html
+          echo "Created index.html."
+
       - name: Update index.html with blog post content
         run: |
-          cat blog_post.html > index.html
+          cat blog_post.html >> index.html
           echo "Updated index.html with blog post content."
 
   publish-blog-post:
