@@ -1,23 +1,23 @@
-import os
-import sys
+import git
+import markdown2
 
-def generate_blog_post():
-  """Generates a blog post from a file."""
+# Initialize the repository
+repo = git.Repo(".")
 
-  # Get the path to the blog post file.
-  blog_post_file = os.path.join(os.getcwd(), "blog_post.md")
+# Create the blog content
+blog_content = "# My Blog\n\n"
 
-  # Read the content of the blog post file.
-  with open(blog_post_file) as f:
-    blog_post_content = f.read()
+# Loop through all commits and fetch their descriptions
+for commit in repo.iter_commits():
+    commit_description = commit.message.strip()
+    blog_content += f"## Commit {commit.hexsha}\n\n"
+    blog_content += f"{commit_description}\n\n"
 
-  # Generate the HTML content of the blog post.
-  html_content = markdown.markdown(blog_post_content)
+# Convert the blog content to HTML
+html_content = markdown2.markdown(blog_content)
 
-  # Write the HTML content of the blog post to a file.
-  with open("blog_post.html", "w") as f:
-    f.write(html_content)
+# Save the HTML content to the blog_post.html file
+with open("blog_post.html", "w", encoding="utf-8") as html_file:
+    html_file.write(html_content)
 
-if __name__ == "__main__":
-  generate_blog_post()
-
+print("Blog post generated successfully.")
