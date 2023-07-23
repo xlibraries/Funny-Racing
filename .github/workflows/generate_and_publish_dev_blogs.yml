@@ -67,7 +67,7 @@ jobs:
 
       - name: Update index.html with blog post content
         run: |
-          echo "<!-- Blog post content -->" | tee -a /var/www/html/index.html
-          cat /var/www/html/blog-posts/blog_post.html | tee -a /var/www/html/index.html
-          echo "<!-- End of blog post content -->" | tee -a /var/www/html/index.html
+          sudo sh -c "echo '<!-- Blog post content -->' >> /var/www/html/index.html"
+          sudo cat /var/www/html/blog-posts/blog_post.html | sudo tee -a /var/www/html/index.html
+          sudo sh -c "echo '<!-- End of blog post content -->' >> /var/www/html/index.html"
           echo "Updated index.html with blog post content."
