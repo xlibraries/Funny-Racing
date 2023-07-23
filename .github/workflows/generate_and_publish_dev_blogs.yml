@@ -1,28 +1,25 @@
-name: Generate and Publish Blog
+name: Generate and Publish Dev Blogs
 
 on:
   push:
     branches:
-      - gh-pages  # Change this to your desired branch
+      - main
 
 jobs:
   generate-blog-post:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Install pandoc if not available
+      - name: Install Python and required packages
         run: |
-          if ! command -v pandoc &> /dev/null; then
-            sudo apt-get update
-            sudo apt-get install -y pandoc
-          fi
-
-      - name: Install gitpython and markdown2
-        run: pip install gitpython markdown2
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip
+          pip3 install gitpython markdown2
 
       - name: Generate blog post from commits
-        run: python generate_blogs.py
+        run: |
+          python3 generate_blogs.py
 
       - name: Upload blog post artifact
         uses: actions/upload-artifact@v2
@@ -34,7 +31,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: generate-blog-post
     steps:
-      - uses: actions/checkout@v3
+      - name: Install Apache web server
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apache2
 
       - name: Create blog-posts directory if not available
         run: |
@@ -50,28 +50,14 @@ jobs:
           name: blog_post
           path: blog_post_artifact
 
-      - name: Retrieve commit descriptions
-        id: get_commit_descriptions
-        run: |
-          commit_descriptions=$(git log --pretty=%B)
-          echo "::set-output name=commit_descriptions::$commit_descriptions"
-
-      - name: Generate blog index.html
-        run: |
-          cp index.html /var/www/html/blog-posts
-
       - name: Publish blog post
         run: |
           echo "Publishing blog post..."
-          if [ -f "blog_post_artifact/blog_post.html" ]; then
-            # Add commit description to the beginning of the HTML file
-            commit_descriptions="${{ steps.get_commit_descriptions.outputs.commit_descriptions }}"
-            echo "<h1>Blog Posts</h1>" > /var/www/html/blog-posts/index.html
-            echo "$commit_descriptions" >> /var/www/html/blog-posts/index.html
-            cat blog_post_artifact/blog_post.html >> blog_post_with_description.html
-            # Copy the combined HTML file to the destination directory
-            cp blog_post_with_description.html /var/www/html/blog-posts
-            echo "Blog post published successfully."
-          else
-            echo "Failed to find the HTML file in the artifact."
-          fi
+          cp blog_post_artifact/blog_post.html /var/www/html/blog-posts
+          echo "Blog post published successfully."
+
+      - name: List files in the destination directory
+        run: ls -l /var/www/html/blog-posts
+
+      - name: Display content of blog_post.html
+        run: cat /var/www/html/blog-posts/blog_post.html

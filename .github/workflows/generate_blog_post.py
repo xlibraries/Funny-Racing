@@ -1,23 +1,30 @@
 import git
 import markdown2
 
-# Initialize the repository
-repo = git.Repo(".")
+# Initialize the Git repository
+repo = git.Repo()
 
-# Create the blog content
-blog_content = "# My Blog\n\n"
+# Get the list of commits
+commits = list(repo.iter_commits('main'))
 
-# Loop through all commits and fetch their descriptions
-for commit in repo.iter_commits():
-    commit_description = commit.message.strip()
-    blog_content += f"## Commit {commit.hexsha}\n\n"
-    blog_content += f"{commit_description}\n\n"
+# Initialize the Markdown converter
+markdowner = markdown2.Markdown()
 
-# Convert the blog content to HTML
-html_content = markdown2.markdown(blog_content)
+# Loop through each commit
+for commit in commits:
+    # Extract commit message
+    commit_message = commit.message
 
-# Save the HTML content to the blog_post.html file
-with open("blog_post.html", "w", encoding="utf-8") as html_file:
-    html_file.write(html_content)
+    # Get the code diff for the commit
+    code_diff = commit.diff(commit.parents[0]).__str__()
 
-print("Blog post generated successfully.")
+    # Convert the code diff to HTML
+    pandoc_html = markdowner.convert(code_diff)
+
+    # Add commit message to the beginning of the HTML content
+    commit_html = f"<h2>Commit Message:</h2><p>{commit_message}</p>"
+    pandoc_html_with_commit = commit_html + pandoc_html
+
+    # Write the HTML content with the commit message to blog_post.html
+    with open("blog_post.html", "w") as html_file:
+        html_file.write(pandoc_html_with_commit)
