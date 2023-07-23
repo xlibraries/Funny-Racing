@@ -29,10 +29,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y apache2
-
-      - name: Publish blog post
+          
+      - name: Print files and folders in the directory
         run: |
           ls -R
+        
+      - name: Publish blog post
+        run: |
           echo "Publishing blog post..."
           sudo cp index.html /var/www/html/
           echo "Blog post published successfully."
