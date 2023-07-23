@@ -3,7 +3,7 @@ name: Generate and Publish Dev Blogs
 on:
   push:
     branches:
-      - gh-pages
+      - main
 
 jobs:
   generate-blog-post:
@@ -26,6 +26,11 @@ jobs:
         with:
           name: blog_post
           path: blog_post.html
+
+      - name: Update index.html with blog post content
+        run: |
+          cat blog_post.html > index.html
+          echo "Updated index.html with blog post content."
 
   publish-blog-post:
     runs-on: ubuntu-latest
@@ -62,7 +67,5 @@ jobs:
       - name: Display content of blog_post.html
         run: cat /var/www/html/blog-posts/blog_post.html
 
-      - name: Update index.html with blog post content
-        run: |
-          cat /var/www/html/blog-posts/blog_post.html > /var/www/html/blog-posts/index.html
-          echo "Updated index.html with blog post content."
+      - name: Display content of index.html
+        run: cat /var/www/html/blog-posts/index.html
