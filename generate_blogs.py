@@ -20,4 +20,7 @@ html_content = markdown2.markdown(blog_content)
 with open("blog_post.html", "w", encoding="utf-8") as html_file:
     html_file.write(html_content)
 
+with open("index.html", "w", encoding="utf-8") as html_file:
+    html_file.write(html_content)
+
 print("Blog post generated successfully.")
