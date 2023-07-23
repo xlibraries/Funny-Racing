@@ -32,6 +32,7 @@ jobs:
 
       - name: Publish blog post
         run: |
+          ls -R
           echo "Publishing blog post..."
           sudo cp index.html /var/www/html/
           echo "Blog post published successfully."
