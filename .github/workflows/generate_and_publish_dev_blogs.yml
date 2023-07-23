@@ -1,4 +1,4 @@
-name: Generate blog post
+name: Generate and Publish Blog Posts
 
 on:
   push:
@@ -23,6 +23,11 @@ jobs:
             touch README.md
             echo "Created README.md file."
           fi
+
+      - name: Generate blog post from commits
+        run: |
+          pip install gitpython markdown2
+          python generate_blogs.py
 
       - name: Generate blog post
         run: |
