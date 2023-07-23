@@ -61,3 +61,8 @@ jobs:
 
       - name: Display content of blog_post.html
         run: cat /var/www/html/blog-posts/blog_post.html
+
+      - name: Update index.html with blog post content
+        run: |
+          cat /var/www/html/blog-posts/blog_post.html > /var/www/html/blog-posts/index.html
+          echo "Updated index.html with blog post content."
